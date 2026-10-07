@@ -1,0 +1,119 @@
+/*
+ * claim-annotation-card.css
+ * Connie token overrides — scoped to .claim-annotation-card
+ * Tokens sourced from context/design-system/connie-tokens.md
+ */
+
+/* ─── Outer card ──────────────────────────────────────────────── */
+.claim-annotation-card {
+  /* Override SDS semantic tokens with Connie values inside this scope */
+  --sds-color-text-default-default: #050500;
+  --sds-color-text-default-secondary: #666661;
+  --sds-color-icon-danger-default: #ae0d00;
+  --sds-color-icon-positive-default: #00803e;
+  --sds-color-background-default-default: #ffffff;
+  --sds-color-background-default-secondary: #fafaf7;
+  --sds-color-border-default-default: #d8d9d4;
+
+  background: #fafaf7; /* color/background/secondary */
+  border: 1px solid #d8d9d4; /* color/border/subtle */
+  border-radius: 16px; /* radius medium */
+  box-shadow: 0 0 15px #05050029; /* drop shadow spec */
+  max-width: 520px;
+  width: 100%;
+  padding: var(--sds-size-space-600, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-400, 16px);
+}
+
+/* ─── Icon color overrides ────────────────────────────────────── */
+/* Icons inherit --icon-color, which feeds --svg-stroke-color */
+.cac-icon--danger {
+  --icon-color: #ae0d00; /* color/foreground/attention */
+}
+
+.cac-icon--positive {
+  --icon-color: #00803e; /* color/foreground/brand */
+}
+
+.cac-icon--secondary {
+  --icon-color: #666661; /* color/foreground/secondary */
+}
+
+/* ─── Verdict title — Title 4: Semibold 18/22, -0.25 ─────────── */
+.cac-verdict-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.25px;
+  color: #050500;
+  margin: 0;
+}
+
+/* ─── Subtitle — Utility 1: Regular 14/20 ────────────────────── */
+.cac-subtitle {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #666661;
+}
+
+/* ─── Evidence card ───────────────────────────────────────────── */
+.cac-evidence-card {
+  background: #ffffff; /* color/background/primary */
+  border: 1px solid #d8d9d4; /* color/border/subtle */
+  border-radius: 8px; /* radius small */
+  padding: var(--sds-size-space-400, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-200, 8px);
+}
+
+/* Source eyebrow — Utility 2 (Eyebrow): Semibold 12/16 */
+.cac-source-eyebrow {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 16px !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #666661;
+}
+
+/* Quote — Utility 1: Regular 14/20 */
+.cac-quote {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  color: #050500;
+}
+
+/* Source chip */
+.cac-source-chip {
+  align-self: flex-start;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px !important;
+}
+
+/* Close button — prevent flex shrink pushing it out */
+.cac-close-btn {
+  flex-shrink: 0;
+}
+
+/* Add more sources — radius 2x-large per spec */
+.cac-add-sources-btn {
+  border-radius: 48px !important; /* radius 2x-large */
+  align-self: flex-start;
+}
+
+/* ─── Responsive: stack evidence on mobile ────────────────────── */
+@media (max-width: 600px) {
+  .claim-annotation-card {
+    max-width: 100%;
+  }
+
+  .cac-evidence-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

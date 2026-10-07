@@ -1,5 +1,6 @@
 import { Footer, Header } from "compositions";
 import { AllProviders } from "data";
+import { ClaimAnnotationCardDemo } from "./examples/ClaimAnnotationCardDemo";
 import { CompoundDesigningWorkshop } from "./examples/CompoundDesigningWorkshop";
 import { SdsWorkshopWelcomePage } from "./examples/SdsWorkshopWelcomePage";
 import { useEffect, useState } from "react";
@@ -14,18 +15,33 @@ function App() {
   }, []);
 
   const isSdsWelcome = hash === "#sds-welcome";
+  const isConnie = hash === "#connie";
 
   return (
     <AllProviders>
       <Header
         logoAriaLabel={
-          isSdsWelcome
-            ? "Back to SDS overview top"
-            : "Back to workshop introduction"
+          isConnie
+            ? "Back to Connie demo top"
+            : isSdsWelcome
+              ? "Back to SDS overview top"
+              : "Back to workshop introduction"
         }
-        logoHref={isSdsWelcome ? "#sds-welcome-top" : "#workshop-hero-heading"}
+        logoHref={
+          isConnie
+            ? "#connie"
+            : isSdsWelcome
+              ? "#sds-welcome-top"
+              : "#workshop-hero-heading"
+        }
       />
-      {isSdsWelcome ? <SdsWorkshopWelcomePage /> : <CompoundDesigningWorkshop />}
+      {isConnie ? (
+        <ClaimAnnotationCardDemo />
+      ) : isSdsWelcome ? (
+        <SdsWorkshopWelcomePage />
+      ) : (
+        <CompoundDesigningWorkshop />
+      )}
       <Footer />
     </AllProviders>
   );
