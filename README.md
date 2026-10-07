@@ -58,14 +58,12 @@ Standing decisions and hard-won lessons persist across sessions:
 
 ```bash
 npm install
-node node_modules/vite/dist/node/cli.js --port 8001
+npm run app:dev
 ```
 
 Then open:
-- `http://localhost:8001/#connie` — the interactive stage
-- `http://localhost:8001/#connie-states` — the four-state demo
-
-> Note: `npx vite` may not work if the binary is broken. Use the direct node path above.
+- `http://localhost:8000/#connie` — the interactive stage
+- `http://localhost:8000/#connie-states` — the four-state demo
 
 ---
 
