@@ -68,8 +68,18 @@
   width: 521px;
   background: #00803e;
   opacity: 0.2;
-  cursor: default;
-  pointer-events: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.cs-highlight--green:hover {
+  opacity: 0.35;
+}
+
+.cs-highlight--green:focus-visible {
+  outline: 2px solid #00803e;
+  outline-offset: 2px;
+  opacity: 0.35;
 }
 
 /* Misleading red highlight — "Comfortable & Adjustable…" */
@@ -172,12 +182,18 @@
 }
 
 /* ─── Card anchor ─────────────────────────────────────────────── */
-/* Figma: left 647, top 361 */
+/* Misleading card — Figma: left 647, top 361 */
 .cs-card-anchor {
   position: absolute;
   left: 647px;
   top: 361px;
   width: 520px;
+}
+
+/* Verified card — Figma: left 862, top 215 */
+.cs-card-anchor--verified {
+  left: 862px;
+  top: 215px;
 }
 
 /* ─── Annotation card ─────────────────────────────────────────── */
