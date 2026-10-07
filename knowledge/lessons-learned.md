@@ -20,3 +20,17 @@
 **What went wrong:** Red-green color blindness makes the two states hard to tell apart.
 **Solution:** Each state uses a different icon shape (XCircle, CheckCircle, Question) and a different title.
 **Rule for next time:** Every state needs a distinct icon shape and title text, not just a color change. (WCAG 1.4.1)
+
+## 2026-10 — Building from a text spec alone produces wrong layout and invented copy
+
+**What happened:** The first #connie implementation was built from a written spec without reading the Figma. Coordinates, copy, and icon choices were guessed.
+**What went wrong:** The layout didn't match the Figma frame, copy was invented rather than pulled from the actual design, and icons differed (outline vs solid filled).
+**Solution:** Read the Figma through the MCP (get_design_context, get_screenshot) before writing any layout code. Download exact assets; don't approximate.
+**Rule for next time:** Always call get_design_context on the target frame before implementing a Figma design. The spec is a reference; the Figma is the source of truth.
+
+## 2026-10 — The Critic passed visual checks from code, not from a rendered screenshot
+
+**What happened:** The Critic reviewed the claim annotation card by reading source code and comparing it to the Figma design context output. It listed issues correctly but didn't catch icon shape errors (outline vs solid) because it wasn't looking at actual rendered pixels.
+**What went wrong:** Code review alone misses rendering artifacts — icon variants, font fallbacks, opacity blending — that only appear in the browser.
+**Solution:** Take a Playwright screenshot of the rendered page in the same state as the Figma frame being compared, then review side by side.
+**Rule for next time:** Visual review must compare a screenshot of the rendered page to the Figma screenshot, in the same open/closed state. Don't pass visual checks based on code alone.

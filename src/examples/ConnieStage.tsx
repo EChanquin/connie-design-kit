@@ -225,6 +225,11 @@ export function ConnieStage() {
               <MisleadingCard onClose={close} />
             </div>
           )}
+
+          {/* Disclaimer bar */}
+          <p className="cs-disclaimer">
+            Prototype with synthetic data. Verdicts and quotes are illustrative and do not reflect real test results.
+          </p>
         </div>
       </div>
     </div>

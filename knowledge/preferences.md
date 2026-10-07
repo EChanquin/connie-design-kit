@@ -26,7 +26,7 @@ Standing decisions about visual style, layout, and tooling. These apply to all d
 
 ## Agent scope
 
-**Decision:** Do only what the prompt asks. No pixel sampling, extra investigations, or follow-on checks unless explicitly requested. When a task is done, stop and report.
+**Decision:** Do only what the prompt asks, then stop and report. No pixel sampling, extra investigations, or follow-on checks unless explicitly requested.
 
 **Rationale:** Unsolicited investigation wastes time and creates noise. The user knows what they want verified; if they need more, they'll ask.
 

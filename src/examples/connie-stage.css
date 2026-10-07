@@ -341,6 +341,23 @@
   margin: 0;
 }
 
+/* ─── Disclaimer bar ──────────────────────────────────────────── */
+.cs-disclaimer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.72);
+  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #666661;
+  text-align: center;
+  pointer-events: none;
+}
+
 /* ─── Source chip ─────────────────────────────────────────────── */
 /* Figma: pill shape, bg white, border #d8d9d4 0.5px, rounded-80, pl-8 pr-12 py-2 */
 .cs-source-chip {
