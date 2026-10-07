@@ -47,7 +47,7 @@
   font-weight: 600;
   line-height: 22px;
   letter-spacing: -0.25px;
-  color: #050500;
+  color: var(--sds-color-text-default-default, #050500);
   margin: 0;
 }
 
@@ -56,13 +56,13 @@
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
-  color: #666661;
+  color: var(--sds-color-text-default-secondary, #666661);
 }
 
 /* ─── Evidence card ───────────────────────────────────────────── */
 .cac-evidence-card {
-  background: #ffffff; /* color/background/primary */
-  border: 1px solid #d8d9d4; /* color/border/subtle */
+  background: var(--sds-color-background-default-default, #ffffff);
+  border: 1px solid var(--sds-color-border-default-default, #d8d9d4);
   border-radius: 8px; /* radius small */
   padding: var(--sds-size-space-400, 16px);
   display: flex;
@@ -77,14 +77,14 @@
   line-height: 16px !important;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #666661;
+  color: var(--sds-color-text-default-secondary, #666661);
 }
 
 /* Quote — Utility 1: Regular 14/20 */
 .cac-quote {
   font-size: 14px !important;
   line-height: 20px !important;
-  color: #050500;
+  color: var(--sds-color-text-default-default, #050500);
 }
 
 /* Source chip */

@@ -39,6 +39,7 @@ export type ClaimAnnotationCardProps = {
   /** Pass CR evidence before community evidence so order matches the spec */
   evidence?: EvidenceItem[];
   onClose?: () => void;
+  onAddSources?: () => void;
 };
 
 // Verdict row config — icon shape + title ensures state is never conveyed by color alone (WCAG 1.4.1)
@@ -59,7 +60,7 @@ const STATUS_CONFIG = {
   "verified-community": {
     Icon: IconCheckCircle,
     iconClass: "cac-icon--positive",
-    title: "Verified claim",
+    title: "Community verified",
     subtitle:
       "Our testers haven't reviewed this product, but it matches what real users are saying.",
   },
@@ -102,6 +103,7 @@ export function ClaimAnnotationCard({
   status,
   evidence = [],
   onClose,
+  onAddSources,
 }: ClaimAnnotationCardProps) {
   const { Icon: VerdictIcon, iconClass, title, subtitle } =
     STATUS_CONFIG[status];
@@ -112,7 +114,7 @@ export function ClaimAnnotationCard({
     // Outer card: background-secondary, radius-medium, drop shadow — max-width 520px
     <div
       className="claim-annotation-card"
-      role="dialog"
+      role="region"
       aria-label={`Claim check: ${claim}`}
     >
       {/* Verdict row + close — Flex space-between */}
@@ -132,7 +134,7 @@ export function ClaimAnnotationCard({
         {onClose && (
           <IconButton
             variant="subtle"
-            size="small"
+            size="medium"
             aria-label="Close"
             onPress={onClose}
             className="cac-close-btn"
@@ -160,7 +162,7 @@ export function ClaimAnnotationCard({
 
       {/* Unable to verify: calm call-to-action, not an error state */}
       {status === "unable-to-verify" && (
-        <Button variant="subtle" className="cac-add-sources-btn">
+        <Button variant="subtle" className="cac-add-sources-btn" onPress={onAddSources}>
           Add more sources
         </Button>
       )}

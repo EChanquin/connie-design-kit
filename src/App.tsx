@@ -2,6 +2,7 @@ import { Footer, Header } from "compositions";
 import { AllProviders } from "data";
 import { ClaimAnnotationCardDemo } from "./examples/ClaimAnnotationCardDemo";
 import { CompoundDesigningWorkshop } from "./examples/CompoundDesigningWorkshop";
+import { ConnieStage } from "./examples/ConnieStage";
 import { SdsWorkshopWelcomePage } from "./examples/SdsWorkshopWelcomePage";
 import { useEffect, useState } from "react";
 
@@ -16,26 +17,36 @@ function App() {
 
   const isSdsWelcome = hash === "#sds-welcome";
   const isConnie = hash === "#connie";
+  const isConnieStates = hash === "#connie-states";
+
+  // ConnieStage runs without Header/Footer — full-bleed 1440×900 stage
+  if (isConnie) {
+    return (
+      <AllProviders>
+        <ConnieStage />
+      </AllProviders>
+    );
+  }
 
   return (
     <AllProviders>
       <Header
         logoAriaLabel={
-          isConnie
-            ? "Back to Connie demo top"
+          isConnieStates
+            ? "Back to Connie states top"
             : isSdsWelcome
               ? "Back to SDS overview top"
               : "Back to workshop introduction"
         }
         logoHref={
-          isConnie
-            ? "#connie"
+          isConnieStates
+            ? "#connie-states"
             : isSdsWelcome
               ? "#sds-welcome-top"
               : "#workshop-hero-heading"
         }
       />
-      {isConnie ? (
+      {isConnieStates ? (
         <ClaimAnnotationCardDemo />
       ) : isSdsWelcome ? (
         <SdsWorkshopWelcomePage />

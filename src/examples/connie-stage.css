@@ -1,0 +1,356 @@
+/*
+ * connie-stage.css
+ * 1440×900 fixed stage for the Connie inline annotation demo
+ * Coordinates from Figma frame 16:6784
+ */
+
+/* ─── Stage wrapper ───────────────────────────────────────────── */
+.connie-stage-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0ed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.connie-stage {
+  position: relative;
+  width: 1440px;
+  height: 900px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #a7a7a7;
+}
+
+/* ─── Background ──────────────────────────────────────────────── */
+.cs-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Figma: w-[109.38%] — image wider than stage, left-aligned */
+.cs-bg-img {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 109.38%;
+  height: calc(100% + 2px);
+  object-fit: cover;
+  display: block;
+}
+
+/* rgba(0,0,0,0.1) dim scrim over the screenshot */
+.cs-bg-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Highlights ──────────────────────────────────────────────── */
+.cs-highlight {
+  position: absolute;
+  height: 21px;
+  border-radius: 4px;
+  border: none;
+  padding: 0;
+}
+
+/* Verified green highlight — "Versatile Design…" */
+/* Figma: left 530, top 173, w 521 */
+.cs-highlight--green {
+  left: 530px;
+  top: 173px;
+  width: 521px;
+  background: #00803e;
+  opacity: 0.2;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Misleading red highlight — "Comfortable & Adjustable…" */
+/* Figma: left 536, top 315, w 325 */
+.cs-highlight--red {
+  left: 536px;
+  top: 315px;
+  width: 325px;
+  background: #ae0d00;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.cs-highlight--red:hover {
+  opacity: 0.45;
+}
+
+.cs-highlight--red:focus-visible {
+  outline: 2px solid #ae0d00;
+  outline-offset: 2px;
+  opacity: 0.45;
+}
+
+/* ─── NaviBar ─────────────────────────────────────────────────── */
+/* Figma: left 34, top 316, rounded-8, border #d8d9d4, shadow */
+.cs-navibar {
+  position: absolute;
+  left: 34px;
+  top: 316px;
+  background: white;
+  border: 0.5px solid #d8d9d4;
+  border-radius: 8px;
+  box-shadow: 0 0 7.5px rgba(5, 5, 0, 0.16);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.cs-navibar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cs-navibar-divider {
+  width: 40px;
+  height: 1px;
+  opacity: 0.3;
+}
+
+/* ─── Connie C button ─────────────────────────────────────────── */
+/* Figma: left 34, top 584, 60×60 */
+.cs-c-button {
+  position: absolute;
+  left: 34px;
+  top: 584px;
+  width: 60px;
+  height: 60px;
+}
+
+.cs-c-bg {
+  position: absolute;
+  inset: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.cs-c-letter {
+  position: absolute;
+  left: 15px;
+  top: 0px;
+  font-family: 'Besley', Georgia, serif;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 60px;
+  color: #16120f;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Figma: left -9 top 9 within the inner group (left 20, top 6) → abs: 11, 15 */
+.cs-c-star {
+  position: absolute;
+  left: 11px;
+  top: 15px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Figma: left 46, top 1 within the 60×60 */
+.cs-c-dot {
+  position: absolute;
+  left: 46px;
+  top: 1px;
+  width: 14px;
+  height: 14px;
+}
+
+/* ─── Card anchor ─────────────────────────────────────────────── */
+/* Figma: left 647, top 361 */
+.cs-card-anchor {
+  position: absolute;
+  left: 647px;
+  top: 361px;
+  width: 520px;
+}
+
+/* ─── Annotation card ─────────────────────────────────────────── */
+/* Figma node 16:6796 — bg #fafaf7, border #c5c5c5 0.5px, radius 16, shadow */
+.cs-card {
+  background: #fafaf7;
+  border: 0.5px solid #c5c5c5;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(5, 5, 0, 0.16);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Header row ──────────────────────────────────────────────── */
+.cs-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cs-card-verdict-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Verdict icon: 20×20 fixed, no svg-stroke override needed — it's a raster asset */
+.cs-verdict-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Title 4: CR-Averta Semibold 18/22, -0.25 tracking */
+.cs-verdict-title {
+  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.25px;
+  color: #050500;
+  white-space: nowrap;
+}
+
+/* Close button — 36×36 touch target */
+.cs-close-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: -8px;
+  margin-right: -8px;
+  color: inherit;
+}
+
+.cs-close-btn:hover {
+  background: rgba(5, 5, 0, 0.06);
+}
+
+.cs-close-btn:focus-visible {
+  outline: 2px solid var(--sds-color-border-brand-default, #111);
+  outline-offset: 1px;
+}
+
+/* ─── Subtitle ────────────────────────────────────────────────── */
+/* Utility 1: Regular 14/20 */
+.cs-subtitle {
+  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #050500;
+  margin: 0;
+}
+
+/* ─── Evidence row ────────────────────────────────────────────── */
+/* Figma: flex row, gap 12, padding 8, rounded 8 */
+.cs-evidence-row {
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* ─── Evidence card ───────────────────────────────────────────── */
+/* Figma: w 220, bg white, border #d8d9d4 0.5px, radius 8, py 17-20, px 16 */
+.cs-evidence-card {
+  width: 220px;
+  flex-shrink: 0;
+  background: white;
+  border: 0.5px solid #d8d9d4;
+  border-radius: 8px;
+  padding: 17px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ─── Source row ──────────────────────────────────────────────── */
+.cs-source-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Source logo avatar: 16×16 circle */
+.cs-source-avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 0.5px solid white;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Source name: Utility 2 / Eyebrow: Semibold 12/16 */
+.cs-source-name {
+  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #050500;
+  white-space: nowrap;
+}
+
+/* ─── Quote ───────────────────────────────────────────────────── */
+/* Utility 3 Not bolded: Regular 12/17 */
+.cs-quote {
+  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #050500;
+  margin: 0;
+}
+
+/* ─── Source chip ─────────────────────────────────────────────── */
+/* Figma: pill shape, bg white, border #d8d9d4 0.5px, rounded-80, pl-8 pr-12 py-2 */
+.cs-source-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  border: 0.5px solid #d8d9d4;
+  border-radius: 80px;
+  padding: 2px 12px 2px 8px;
+  text-decoration: none;
+  color: #222;
+  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.cs-source-chip:hover {
+  background: #f5f5f3;
+}
+
+.cs-source-chip:focus-visible {
+  outline: 2px solid var(--sds-color-border-brand-default, #111);
+  outline-offset: 1px;
+}
