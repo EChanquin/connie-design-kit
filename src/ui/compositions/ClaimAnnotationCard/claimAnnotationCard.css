@@ -1,0 +1,111 @@
+/*
+ * claimAnnotationCard.css
+ * Every value here is a token. Connie values live in src/connie-theme.css;
+ * the card root carries .connie-theme so SDS semantic tokens resolve to them.
+ */
+
+/* ─── Outer card ──────────────────────────────────────────────── */
+.claim-annotation-card {
+  background: var(--sds-color-background-default-secondary);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--connie-radius-medium);
+  box-shadow: var(--connie-shadow-card);
+  max-width: 520px;
+  width: 100%;
+  padding: var(--sds-size-space-600);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-400);
+}
+
+/* ─── Verdict icon color ──────────────────────────────────────── */
+/* .icon (icons.css) also sets --icon-color, so these selectors need the
+   extra class to win. Before this fix every verdict icon rendered black. */
+.claim-annotation-card .icon.cac-icon--danger {
+  --icon-color: var(--sds-color-icon-danger-default);
+}
+
+.claim-annotation-card .icon.cac-icon--positive {
+  --icon-color: var(--sds-color-icon-positive-default);
+}
+
+.claim-annotation-card .icon.cac-icon--secondary {
+  --icon-color: var(--sds-color-icon-default-secondary);
+}
+
+/* ─── Verdict title — Title 4 ─────────────────────────────────── */
+.cac-verdict-title {
+  font-size: var(--connie-type-title-4-size);
+  font-weight: 600;
+  line-height: var(--connie-type-title-4-line-height);
+  letter-spacing: var(--connie-type-title-4-tracking);
+  color: var(--sds-color-text-default-default);
+  margin: 0;
+}
+
+/* ─── Subtitle — Utility 1 ────────────────────────────────────── */
+.cac-subtitle {
+  font-size: var(--connie-type-utility-1-size) !important;
+  font-weight: 400 !important;
+  line-height: var(--connie-type-utility-1-line-height) !important;
+  color: var(--sds-color-text-default-secondary);
+}
+
+/* ─── Evidence card ───────────────────────────────────────────── */
+.cac-evidence-card {
+  background: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--connie-radius-small);
+  padding: var(--sds-size-space-400);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-size-space-200);
+}
+
+/* Source eyebrow — Utility 2 */
+.cac-source-eyebrow {
+  font-size: var(--connie-type-utility-2-size) !important;
+  font-weight: 600 !important;
+  line-height: var(--connie-type-utility-2-line-height) !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sds-color-text-default-secondary);
+}
+
+/* Quote — Utility 1 */
+.cac-quote {
+  font-size: var(--connie-type-utility-1-size) !important;
+  line-height: var(--connie-type-utility-1-line-height) !important;
+  color: var(--sds-color-text-default-default);
+}
+
+/* Source chip — Utility 3 */
+.cac-source-chip {
+  align-self: flex-start;
+  display: inline-flex !important;
+  align-items: center;
+  gap: var(--connie-spacing-50);
+  font-size: var(--connie-type-utility-3-size) !important;
+}
+
+/* Close button — prevent flex shrink pushing it out */
+.cac-close-btn {
+  flex-shrink: 0;
+}
+
+/* Add more sources — radius 2x-large */
+.cac-add-sources-btn {
+  border-radius: var(--connie-radius-2x-large) !important;
+  align-self: flex-start;
+}
+
+/* ─── Responsive: stack evidence on mobile ────────────────────── */
+@media (max-width: 600px) {
+  .claim-annotation-card {
+    max-width: 100%;
+  }
+
+  .cac-evidence-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

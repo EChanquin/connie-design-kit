@@ -67,7 +67,7 @@
   left: 530px;
   top: 173px;
   width: 521px;
-  background: #00803e;
+  background: var(--connie-color-foreground-brand);
   opacity: 0.2;
   cursor: pointer;
   transition: opacity 0.15s ease;
@@ -78,7 +78,7 @@
 }
 
 .cs-highlight--green:focus-visible {
-  outline: 2px solid #00803e;
+  outline: 2px solid var(--connie-color-foreground-brand);
   outline-offset: 2px;
   opacity: 0.35;
 }
@@ -89,7 +89,7 @@
   left: 536px;
   top: 315px;
   width: 325px;
-  background: #ae0d00;
+  background: var(--connie-color-foreground-attention);
   opacity: 0.3;
   cursor: pointer;
   transition: opacity 0.15s ease;
@@ -100,7 +100,7 @@
 }
 
 .cs-highlight--red:focus-visible {
-  outline: 2px solid #ae0d00;
+  outline: 2px solid var(--connie-color-foreground-attention);
   outline-offset: 2px;
   opacity: 0.45;
 }
@@ -112,7 +112,7 @@
   left: 34px;
   top: 316px;
   background: white;
-  border: 0.5px solid #d8d9d4;
+  border: 0.5px solid var(--connie-color-border-subtle);
   border-radius: 8px;
   box-shadow: 0 0 7.5px rgba(5, 5, 0, 0.16);
   padding: 10px;
@@ -200,7 +200,7 @@
 /* ─── Annotation card ─────────────────────────────────────────── */
 /* Figma node 16:6796 — bg #fafaf7, border #c5c5c5 0.5px, radius 16, shadow */
 .cs-card {
-  background: #fafaf7;
+  background: var(--connie-color-background-secondary);
   border: 0.5px solid #c5c5c5;
   border-radius: 16px;
   box-shadow: 0 0 15px rgba(5, 5, 0, 0.16);
@@ -239,7 +239,7 @@
   font-weight: 600;
   line-height: 22px;
   letter-spacing: -0.25px;
-  color: #050500;
+  color: var(--connie-color-foreground-primary);
   white-space: nowrap;
 }
 
@@ -277,7 +277,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #050500;
+  color: var(--connie-color-foreground-primary);
   margin: 0;
 }
 
@@ -296,7 +296,7 @@
   width: 220px;
   flex-shrink: 0;
   background: white;
-  border: 0.5px solid #d8d9d4;
+  border: 0.5px solid var(--connie-color-border-subtle);
   border-radius: 8px;
   padding: 17px 16px 20px;
   display: flex;
@@ -327,7 +327,7 @@
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
-  color: #050500;
+  color: var(--connie-color-foreground-primary);
   white-space: nowrap;
 }
 
@@ -338,7 +338,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 17px;
-  color: #050500;
+  color: var(--connie-color-foreground-primary);
   margin: 0;
 }
 
@@ -361,7 +361,7 @@
   align-items: center;
   gap: 4px;
   background: white;
-  border: 0.5px solid #d8d9d4;
+  border: 0.5px solid var(--connie-color-border-subtle);
   border-radius: 80px;
   padding: 2px 12px 2px 8px;
   text-decoration: none;

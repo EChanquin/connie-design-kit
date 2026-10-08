@@ -2,6 +2,14 @@
 
 Master index of all SDS components. Check here before building anything — if SDS has it, use it.
 
+## Connie compositions
+
+Built on SDS for Connie. Use these before composing anything new from primitives.
+
+| Component | Description | Use when... | Import |
+|-----------|-------------|-------------|--------|
+| ClaimAnnotationCard | Claim check card with verdict and labeled evidence. Full rules in [claim-annotation-card.md](claim-annotation-card.md) | Showing whether a product claim holds up | `import { ClaimAnnotationCard } from "compositions"` |
+
 ## Actions
 
 | Component | Description | Use when... | Import |

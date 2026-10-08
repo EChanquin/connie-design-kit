@@ -30,6 +30,8 @@ Every state uses a distinct icon shape and title — state is never conveyed by 
 
 **`#connie-states`** — A four-state demo page showing all card variants side by side, built with the SDS component library.
 
+**`ClaimAnnotationCard` in the component library** — The card lives in `src/ui/compositions` next to the SDS compositions, with Storybook stories for all four states (`npm run storybook`, then "Connie/Claim Annotation Card"). Connie's tokens live in `src/connie-theme.css`, and the agent reads the usage rules in `context/design-system/components/claim-annotation-card.md` before building with it.
+
 See `case-study/` for before/after screenshots.
 
 ---

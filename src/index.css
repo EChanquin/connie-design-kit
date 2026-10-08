@@ -2,6 +2,7 @@
 @import url("./responsive.css");
 @import url("./theme.css");
 @import url("./icons.css");
+@import url("./connie-theme.css");
 
 :root {
   --global-focus-ring-size: var(--sds-size-stroke-focus-ring);

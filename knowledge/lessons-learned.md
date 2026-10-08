@@ -34,3 +34,11 @@
 **What went wrong:** Code review alone misses rendering artifacts — icon variants, font fallbacks, opacity blending — that only appear in the browser.
 **Solution:** Take a Playwright screenshot of the rendered page in the same state as the Figma frame being compared, then review side by side.
 **Rule for next time:** Visual review must compare a screenshot of the rendered page to the Figma screenshot, in the same open/closed state. Don't pass visual checks based on code alone.
+
+## 2026-10 — Verdict icons rendered black on the states page
+
+**What happened:** On `#connie-states`, every verdict icon rendered black instead of red, green, or gray, even though the card CSS set `--icon-color` for each state.
+**What went wrong:** `.icon` in `icons.css` also sets `--icon-color` with the same specificity and loads later, so it won. The colors were also hardcoded hex values, so the card wasn't actually reading the Connie tokens.
+**Solution:** Moved Connie values into `src/connie-theme.css`, scoped them with `.connie-theme`, and raised the selector to `.claim-annotation-card .icon.cac-icon--*` so the token wins.
+**Rule for next time:** When overriding a variable that a primitive also sets, check the rendered color in a screenshot, not the CSS. Component CSS reads tokens, never hex values.
+

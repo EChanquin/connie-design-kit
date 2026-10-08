@@ -1,0 +1,63 @@
+/*
+ * connie-theme.css
+ * Connie design tokens, named after the tokens in the Connie Figma file.
+ * Source of truth for values: context/design-system/connie-tokens.md
+ *
+ * Components never use these hex values directly. They either read a
+ * --connie-* token, or read an SDS semantic token that .connie-theme
+ * points at a --connie-* token.
+ */
+
+:root {
+  /* Color: foreground */
+  --connie-color-foreground-primary: #050500;
+  --connie-color-foreground-secondary: #666661;
+  --connie-color-foreground-attention: #ae0d00;
+  --connie-color-foreground-brand: #00803e;
+
+  /* Color: background */
+  --connie-color-background-primary: #ffffff;
+  --connie-color-background-secondary: #fafaf7;
+
+  /* Color: border */
+  --connie-color-border-subtle: #d8d9d4;
+
+  /* Shape */
+  --connie-radius-small: 8px;
+  --connie-radius-medium: 16px;
+  --connie-radius-2x-large: 48px;
+  --connie-shadow-card: 0 0 15px #05050029;
+
+  /* Spacing (spacing-core-*) */
+  --connie-spacing-25: 2px;
+  --connie-spacing-50: 4px;
+  --connie-spacing-75: 8px;
+  --connie-spacing-100: 12px;
+  --connie-spacing-300: 24px;
+
+  /* Typography (CR-Averta styles; falls back to the SDS sans) */
+  --connie-type-title-4-size: 18px;
+  --connie-type-title-4-line-height: 22px;
+  --connie-type-title-4-tracking: -0.25px;
+  --connie-type-utility-1-size: 14px;
+  --connie-type-utility-1-line-height: 20px;
+  --connie-type-utility-2-size: 12px;
+  --connie-type-utility-2-line-height: 16px;
+  --connie-type-utility-3-size: 12px;
+  --connie-type-utility-3-line-height: 17px;
+}
+
+/*
+ * Apply .connie-theme to any container to render SDS components with
+ * Connie's look. Components keep using --sds-* names.
+ */
+.connie-theme {
+  --sds-color-text-default-default: var(--connie-color-foreground-primary);
+  --sds-color-text-default-secondary: var(--connie-color-foreground-secondary);
+  --sds-color-icon-danger-default: var(--connie-color-foreground-attention);
+  --sds-color-icon-positive-default: var(--connie-color-foreground-brand);
+  --sds-color-icon-default-secondary: var(--connie-color-foreground-secondary);
+  --sds-color-background-default-default: var(--connie-color-background-primary);
+  --sds-color-background-default-secondary: var(--connie-color-background-secondary);
+  --sds-color-border-default-default: var(--connie-color-border-subtle);
+}

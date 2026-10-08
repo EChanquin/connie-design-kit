@@ -1,6 +1,6 @@
 # Connie Tokens
 
-Pulled from the Connie Figma file (Vision Board, "Inline annotations" frames). Map these onto the SDS semantic tokens in `src/theme.css` by overriding the SDS values, so components keep using `--sds-*` names but render Connie's look.
+Pulled from the Connie Figma file (Vision Board, "Inline annotations" frames). The values live in `src/connie-theme.css` as `--connie-*` custom properties. The `.connie-theme` class points SDS semantic tokens at them, so components keep using `--sds-*` names but render Connie's look. Put `.connie-theme` on a container, never hardcode the hex values below in component CSS.
 
 ## Color
 
