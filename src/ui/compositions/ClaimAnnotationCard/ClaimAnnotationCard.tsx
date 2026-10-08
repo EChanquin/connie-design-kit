@@ -15,7 +15,7 @@ import {
   TextHeading,
   TextSmallStrong,
 } from "primitives";
-import "./claim-annotation-card.css";
+import "./claimAnnotationCard.css";
 
 export type ClaimAnnotationCardStatus =
   | "misleading"
@@ -98,6 +98,11 @@ function EvidenceCard({ item }: { item: EvidenceItem }) {
   );
 }
 
+/**
+ * Connie's claim check card. Shows whether a marketing claim on a product
+ * page holds up, with CR lab evidence and community evidence kept in
+ * separate, labeled cards. Usage rules: context/design-system/claim-annotation-card.md
+ */
 export function ClaimAnnotationCard({
   claim,
   status,
@@ -113,7 +118,7 @@ export function ClaimAnnotationCard({
   return (
     // Outer card: background-secondary, radius-medium, drop shadow — max-width 520px
     <div
-      className="claim-annotation-card"
+      className="claim-annotation-card connie-theme"
       role="region"
       aria-label={`Claim check: ${claim}`}
     >
