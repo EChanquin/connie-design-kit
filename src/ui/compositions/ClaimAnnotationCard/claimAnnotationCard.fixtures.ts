@@ -1,4 +1,5 @@
 import type { EvidenceItem } from "./ClaimAnnotationCard";
+import { SOURCE_LOGOS } from "./sourceLogos";
 
 /*
  * Synthetic example evidence for the claim "all-day comfort" on a stroller
@@ -20,6 +21,7 @@ export const MISLEADING_EVIDENCE: EvidenceItem[] = [
   {
     sourceType: "community",
     sourceName: "Reddit r/BabyBumps",
+    logoSrc: SOURCE_LOGOS.reddit,
     quote:
       "The seat gets really firm after about an hour. My back was aching by the end of our walk. Wish I'd tested it longer in the store.",
     linkLabel: "See thread",
@@ -50,6 +52,7 @@ export const COMMUNITY_ONLY_EVIDENCE: EvidenceItem[] = [
   {
     sourceType: "community",
     sourceName: "Reddit r/Strollers",
+    logoSrc: SOURCE_LOGOS.reddit,
     quote:
       "We live in NYC and walk 6+ miles a day. Never had a complaint — it glides and the handle height is perfect for my 5'10\" husband too.",
     linkLabel: "See thread",

@@ -12,7 +12,9 @@ Pulled from the Connie Figma file (Vision Board, "Inline annotations" frames). T
 | color/foreground/brand | #00803e | Verified claim icon | --sds-color-icon-positive-default |
 | color/background/primary | #ffffff | Evidence cards | --sds-color-background-default-default |
 | color/background/secondary | #fafaf7 | Outer annotation card | --sds-color-background-default-secondary |
-| color/border/subtle | #d8d9d4 | Card and link-chip borders | --sds-color-border-default-default |
+| color/border/subtle | #d8d9d4 | Evidence card and link-chip borders | --sds-color-border-default-default |
+| border card (from node 16:6796) | #c5c5c5 | Outer annotation card border | `--connie-color-border-card` |
+| background hover | #f5f5f3 | Chip and close button hover | `--connie-color-background-hover` |
 
 ## Typography (CR-Averta)
 

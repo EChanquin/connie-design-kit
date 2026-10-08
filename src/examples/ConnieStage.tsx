@@ -1,109 +1,55 @@
+import { ClaimAnnotationCard, SOURCE_LOGOS, type EvidenceItem } from "compositions";
 import { useEffect, useRef, useState } from "react";
 import bgScreenshot from "./connie-stage/bg-screenshot.png";
 import cButtonBg from "./connie-stage/c-button-bg.svg";
 import cButtonDot from "./connie-stage/c-button-dot.svg";
 import cButtonStar from "./connie-stage/c-button-star.svg";
-import iconArrowUpRight from "./connie-stage/icon-arrow-up-right.svg";
 import iconChat from "./connie-stage/icon-chat.svg";
-import iconCheckCircle from "./connie-stage/icon-check-circle.svg";
 import iconGear from "./connie-stage/icon-gear.svg";
 import iconHeart from "./connie-stage/icon-heart.svg";
 import iconLine from "./connie-stage/icon-line.svg";
-import iconLink from "./connie-stage/icon-link.svg";
 import iconQuestion from "./connie-stage/icon-question.svg";
-import iconX from "./connie-stage/icon-x.svg";
-import iconXCircle from "./connie-stage/icon-x-circle.svg";
-import logoCr from "./connie-stage/logo-cr.png";
-import logoReddit from "./connie-stage/logo-reddit.png";
 import "./connie-stage.css";
 
-// ─── Misleading annotation card (node 16:6796) ───────────────────────────────
-function MisleadingCard({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="cs-card" role="region" aria-label='Claim check: "Comfortable &amp; Adjustable: Padded stroller seat"'>
-      <div className="cs-card-header">
-        <div className="cs-card-verdict-row">
-          <img src={iconXCircle} width={20} height={20} alt="Misleading" className="cs-verdict-icon" />
-          <span className="cs-verdict-title">Misleading claim</span>
-        </div>
-        <button className="cs-close-btn" onClick={onClose} aria-label="Close claim check">
-          <img src={iconX} width={18} height={18} alt="" aria-hidden />
-        </button>
-      </div>
-      <p className="cs-subtitle">Doesn't match what our testers and real users are saying.</p>
-      <div className="cs-evidence-row">
-        <div className="cs-evidence-card">
-          <div className="cs-source-row">
-            <img src={logoCr} width={16} height={16} alt="" className="cs-source-avatar" aria-hidden />
-            <span className="cs-source-name">Consumer Reports</span>
-          </div>
-          <p className="cs-quote">"Seat cushioning compressed quickly and offered little support during longer rides."</p>
-          <a href="https://www.consumerreports.org" target="_blank" rel="noopener noreferrer" className="cs-source-chip">
-            <img src={iconLink} width={14} height={14} alt="" aria-hidden />
-            <span>Baby Trend Stroller Review</span>
-            <img src={iconArrowUpRight} width={12} height={12} alt="" aria-hidden />
-          </a>
-        </div>
-        <div className="cs-evidence-card">
-          <div className="cs-source-row">
-            <img src={logoReddit} width={16} height={16} alt="" className="cs-source-avatar" aria-hidden />
-            <span className="cs-source-name">Reddit</span>
-          </div>
-          <p className="cs-quote">"My daughter fusses to get out after one loop around the block."</p>
-          <a href="https://www.reddit.com/r/Strollers" target="_blank" rel="noopener noreferrer" className="cs-source-chip">
-            <img src={iconLink} width={14} height={14} alt="" aria-hidden />
-            <span>Stroller Discussion: Thread</span>
-            <img src={iconArrowUpRight} width={12} height={12} alt="" aria-hidden />
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
+// ─── Card content (Figma nodes 16:6796 and 16:6860) ──────────────────────────
+// The cards themselves are the library ClaimAnnotationCard. Only the copy lives here.
+const MISLEADING_CLAIM = "Comfortable & Adjustable: Padded stroller seat";
+const MISLEADING_EVIDENCE: EvidenceItem[] = [
+  {
+    sourceType: "cr",
+    sourceName: "Consumer Reports",
+    quote: "Seat cushioning compressed quickly and offered little support during longer rides.",
+    linkLabel: "Baby Trend Stroller Review",
+    href: "https://www.consumerreports.org",
+  },
+  {
+    sourceType: "community",
+    sourceName: "Reddit",
+    quote: "My daughter fusses to get out after one loop around the block.",
+    linkLabel: "Stroller Discussion: Thread",
+    href: "https://www.reddit.com/r/Strollers",
+    logoSrc: SOURCE_LOGOS.reddit,
+  },
+];
 
-// ─── Verified annotation card (node 16:6860) ─────────────────────────────────
-function VerifiedCard({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="cs-card" role="region" aria-label='Claim check: "Versatile Design"'>
-      <div className="cs-card-header">
-        <div className="cs-card-verdict-row">
-          <img src={iconCheckCircle} width={20} height={20} alt="Verified" className="cs-verdict-icon" />
-          <span className="cs-verdict-title">Verified claim</span>
-        </div>
-        <button className="cs-close-btn" onClick={onClose} aria-label="Close claim check">
-          <img src={iconX} width={18} height={18} alt="" aria-hidden />
-        </button>
-      </div>
-      <p className="cs-subtitle">Matches what our testers and real users are saying.</p>
-      <div className="cs-evidence-row">
-        <div className="cs-evidence-card">
-          <div className="cs-source-row">
-            <img src={logoCr} width={16} height={16} alt="" className="cs-source-avatar" aria-hidden />
-            <span className="cs-source-name">Consumer Reports</span>
-          </div>
-          <p className="cs-quote">"Testers found it very maneuverable; it's a breeze to navigate through crowded spaces."</p>
-          <a href="https://www.consumerreports.org" target="_blank" rel="noopener noreferrer" className="cs-source-chip">
-            <img src={iconLink} width={14} height={14} alt="" aria-hidden />
-            <span>Baby Trend Stroller Review</span>
-            <img src={iconArrowUpRight} width={12} height={12} alt="" aria-hidden />
-          </a>
-        </div>
-        <div className="cs-evidence-card">
-          <div className="cs-source-row">
-            <img src={logoReddit} width={16} height={16} alt="" className="cs-source-avatar" aria-hidden />
-            <span className="cs-source-name">Reddit</span>
-          </div>
-          <p className="cs-quote">"Does well on long walks."</p>
-          <a href="https://www.reddit.com/r/Strollers" target="_blank" rel="noopener noreferrer" className="cs-source-chip">
-            <img src={iconLink} width={14} height={14} alt="" aria-hidden />
-            <span>Best Strollers: Thread</span>
-            <img src={iconArrowUpRight} width={12} height={12} alt="" aria-hidden />
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
+const VERIFIED_CLAIM = "Versatile Design";
+const VERIFIED_EVIDENCE: EvidenceItem[] = [
+  {
+    sourceType: "cr",
+    sourceName: "Consumer Reports",
+    quote: "Testers found it very maneuverable; it's a breeze to navigate through crowded spaces.",
+    linkLabel: "Baby Trend Stroller Review",
+    href: "https://www.consumerreports.org",
+  },
+  {
+    sourceType: "community",
+    sourceName: "Reddit",
+    quote: "Does well on long walks.",
+    linkLabel: "Best Strollers: Thread",
+    href: "https://www.reddit.com/r/Strollers",
+    logoSrc: SOURCE_LOGOS.reddit,
+  },
+];
 
 // ─── Stage ────────────────────────────────────────────────────────────────────
 // 1440×900 fixed canvas matching Figma frame 16:6784 / 16:6848
@@ -212,7 +158,7 @@ export function ConnieStage() {
               onMouseEnter={cancelClose}
               onMouseLeave={scheduleClose}
             >
-              <VerifiedCard onClose={close} />
+              <ClaimAnnotationCard claim={VERIFIED_CLAIM} status="verified" evidence={VERIFIED_EVIDENCE} onClose={close} />
             </div>
           )}
 
@@ -223,7 +169,7 @@ export function ConnieStage() {
               onMouseEnter={cancelClose}
               onMouseLeave={scheduleClose}
             >
-              <MisleadingCard onClose={close} />
+              <ClaimAnnotationCard claim={MISLEADING_CLAIM} status="misleading" evidence={MISLEADING_EVIDENCE} onClose={close} />
             </div>
           )}
 

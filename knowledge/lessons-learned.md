@@ -42,3 +42,10 @@
 **Solution:** Moved Connie values into `src/connie-theme.css`, scoped them with `.connie-theme`, and raised the selector to `.claim-annotation-card .icon.cac-icon--*` so the token wins.
 **Rule for next time:** When overriding a variable that a primitive also sets, check the rendered color in a screenshot, not the CSS. Component CSS reads tokens, never hex values.
 
+## 2026-10 — Two versions of the same card drifted apart
+
+**What happened:** The live `#connie` stage had its own hand-built claim cards, separate from the library `ClaimAnnotationCard`. The library version had picked up details the Figma never had: uppercase source labels, outline icons, 14px quotes, and evidence boxes stretched to equal height.
+**What went wrong:** With two implementations, fixes landed in one and not the other, and the library drifted from the Figma without anyone noticing.
+**Solution:** Brought the library card back to the Figma (nodes 16:6796 and 16:6860), then made the stage render it. One component now backs the demo, the states page, and Storybook.
+**Rule for next time:** A design gets one implementation. If a demo needs the component, import it. Before changing a library component, compare it to the Figma frame, not to the last version of the code.
+
