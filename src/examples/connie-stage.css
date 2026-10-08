@@ -7,6 +7,7 @@
 /* ─── Stage wrapper ───────────────────────────────────────────── */
 .connie-stage-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #f0f0ed;
@@ -341,21 +342,16 @@
   margin: 0;
 }
 
-/* ─── Disclaimer bar ──────────────────────────────────────────── */
+/* ─── Disclaimer — sits below the stage in the neutral background ─ */
 .cs-disclaimer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.72);
+  flex-shrink: 0;
+  padding: 10px 16px 0;
   font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
   font-size: 11px;
   font-weight: 400;
   line-height: 16px;
-  color: #666661;
+  color: #999994;
   text-align: center;
-  pointer-events: none;
 }
 
 /* ─── Source chip ─────────────────────────────────────────────── */

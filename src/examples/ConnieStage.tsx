@@ -114,7 +114,8 @@ export function ConnieStage() {
 
   useEffect(() => {
     const compute = () => {
-      const s = Math.min(window.innerWidth / 1440, window.innerHeight / 900, 1);
+      // Reserve 40px below the stage for the disclaimer
+      const s = Math.min(window.innerWidth / 1440, (window.innerHeight - 40) / 900, 1);
       setScale(s);
     };
     compute();
@@ -226,12 +227,11 @@ export function ConnieStage() {
             </div>
           )}
 
-          {/* Disclaimer bar */}
-          <p className="cs-disclaimer">
-            Prototype with synthetic data. Verdicts and quotes are illustrative and do not reflect real test results.
-          </p>
         </div>
       </div>
+      <p className="cs-disclaimer">
+        Prototype with synthetic data. Verdicts and quotes are illustrative and do not reflect real test results.
+      </p>
     </div>
   );
 }
