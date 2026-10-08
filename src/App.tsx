@@ -1,9 +1,7 @@
 import { Footer, Header } from "compositions";
 import { AllProviders } from "data";
 import { ClaimAnnotationCardDemo } from "./examples/ClaimAnnotationCardDemo";
-import { CompoundDesigningWorkshop } from "./examples/CompoundDesigningWorkshop";
 import { ConnieStage } from "./examples/ConnieStage";
-import { SdsWorkshopWelcomePage } from "./examples/SdsWorkshopWelcomePage";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -15,45 +13,22 @@ function App() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  const isSdsWelcome = hash === "#sds-welcome";
-  const isConnie = hash === "#connie";
   const isConnieStates = hash === "#connie-states";
 
-  // ConnieStage runs without Header/Footer — full-bleed 1440×900 stage
-  if (isConnie) {
+  if (isConnieStates) {
     return (
       <AllProviders>
-        <ConnieStage />
+        <Header logoAriaLabel="Back to Connie states top" logoHref="#connie-states" />
+        <ClaimAnnotationCardDemo />
+        <Footer />
       </AllProviders>
     );
   }
 
+  // Default (no hash, #connie, or anything else) → ConnieStage
   return (
     <AllProviders>
-      <Header
-        logoAriaLabel={
-          isConnieStates
-            ? "Back to Connie states top"
-            : isSdsWelcome
-              ? "Back to SDS overview top"
-              : "Back to workshop introduction"
-        }
-        logoHref={
-          isConnieStates
-            ? "#connie-states"
-            : isSdsWelcome
-              ? "#sds-welcome-top"
-              : "#workshop-hero-heading"
-        }
-      />
-      {isConnieStates ? (
-        <ClaimAnnotationCardDemo />
-      ) : isSdsWelcome ? (
-        <SdsWorkshopWelcomePage />
-      ) : (
-        <CompoundDesigningWorkshop />
-      )}
-      <Footer />
+      <ConnieStage />
     </AllProviders>
   );
 }
