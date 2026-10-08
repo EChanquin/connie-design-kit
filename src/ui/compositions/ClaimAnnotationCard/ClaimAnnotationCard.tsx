@@ -161,7 +161,7 @@ export function ClaimAnnotationCard({
       {/* Unable to verify: a calm next step, not an error state */}
       {status === "unable-to-verify" && (
         <Button
-          variant="subtle"
+          variant="primary"
           className="cac-add-sources-btn"
           onPress={onAddSources}
         >

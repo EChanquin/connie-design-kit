@@ -196,10 +196,13 @@
   white-space: nowrap;
 }
 
-/* Add more sources — radius 2x-large */
+/* Add more sources — dark primary button, centered (Figma node 34:1871) */
 .cac-add-sources-btn {
-  align-self: flex-start;
-  border-radius: var(--connie-radius-2x-large) !important;
+  --border-radius: var(--connie-radius-small);
+  align-self: center;
+  font-family: var(--connie-font-family);
+  font-size: var(--connie-type-utility-1-size);
+  font-weight: 500;
 }
 
 /* ─── Narrow screens: stack evidence ──────────────────────────── */

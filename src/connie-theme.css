@@ -21,6 +21,11 @@
 
   --connie-color-background-hover: #f5f5f3;
 
+  /* Color: action (primary button, "Unable to verify" frame, node 34:1871) */
+  --connie-color-action-primary: #404040;
+  --connie-color-action-primary-hover: #262626;
+  --connie-color-action-on-primary: #ffffff;
+
   /* Color: border */
   --connie-color-border-subtle: #d8d9d4;
   --connie-color-border-card: #c5c5c5; /* outer annotation card, Figma node 16:6796 */
@@ -66,4 +71,8 @@
   --sds-color-background-default-default: var(--connie-color-background-primary);
   --sds-color-background-default-secondary: var(--connie-color-background-secondary);
   --sds-color-border-default-default: var(--connie-color-border-subtle);
+  --sds-color-background-brand-default: var(--connie-color-action-primary);
+  --sds-color-background-brand-hover: var(--connie-color-action-primary-hover);
+  --sds-color-border-brand-default: var(--connie-color-action-primary);
+  --sds-color-text-brand-on-brand: var(--connie-color-action-on-primary);
 }

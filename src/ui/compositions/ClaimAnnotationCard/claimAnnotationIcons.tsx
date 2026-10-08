@@ -28,10 +28,7 @@ export function VerdictCheckCircle({ className }: Props) {
   );
 }
 
-/*
- * No Figma frame exists for "unable to verify". This is a filled question
- * circle drawn to match the other two verdict icons in weight and shape.
- */
+/* Filled question circle for "unable to verify" (Figma node 34:1871) */
 export function VerdictQuestionCircle({ className }: Props) {
   return (
     <svg className={className} width="20" height="20" viewBox="0 0 20 20" aria-hidden focusable="false">
