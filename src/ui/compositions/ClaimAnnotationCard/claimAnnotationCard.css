@@ -1,111 +1,210 @@
 /*
  * claimAnnotationCard.css
- * Every value here is a token. Connie values live in src/connie-theme.css;
- * the card root carries .connie-theme so SDS semantic tokens resolve to them.
+ * Matches the Connie Figma (Vision Board, nodes 16:6796 and 16:6860).
+ * Every value is a token from src/connie-theme.css. The card root carries
+ * .connie-theme so SDS semantic tokens resolve to Connie values too.
  */
 
 /* ─── Outer card ──────────────────────────────────────────────── */
 .claim-annotation-card {
-  background: var(--sds-color-background-default-secondary);
-  border: 1px solid var(--sds-color-border-default-default);
+  font-family: var(--connie-font-family);
+  background: var(--connie-color-background-secondary);
+  border: 0.5px solid var(--connie-color-border-card);
   border-radius: var(--connie-radius-medium);
   box-shadow: var(--connie-shadow-card);
-  max-width: 520px;
-  width: 100%;
-  padding: var(--sds-size-space-600);
+  padding: var(--connie-spacing-300);
   display: flex;
   flex-direction: column;
-  gap: var(--sds-size-space-400);
+  gap: var(--connie-spacing-100);
+  width: 100%;
+  max-width: 520px;
+  box-sizing: border-box;
 }
 
-/* ─── Verdict icon color ──────────────────────────────────────── */
-/* .icon (icons.css) also sets --icon-color, so these selectors need the
-   extra class to win. Before this fix every verdict icon rendered black. */
-.claim-annotation-card .icon.cac-icon--danger {
-  --icon-color: var(--sds-color-icon-danger-default);
+/* ─── Header ──────────────────────────────────────────────────── */
+/* Title and subtitle sit closer together than the rest of the card */
+.cac-heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.claim-annotation-card .icon.cac-icon--positive {
-  --icon-color: var(--sds-color-icon-positive-default);
+.cac-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--connie-spacing-75);
 }
 
-.claim-annotation-card .icon.cac-icon--secondary {
-  --icon-color: var(--sds-color-icon-default-secondary);
+.cac-verdict-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* ─── Verdict title — Title 4 ─────────────────────────────────── */
+.cac-verdict-icon {
+  display: block;
+  flex-shrink: 0;
+}
+.cac-verdict-icon--danger {
+  color: var(--connie-color-foreground-attention);
+}
+.cac-verdict-icon--positive {
+  color: var(--connie-color-foreground-brand);
+}
+.cac-verdict-icon--neutral {
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* Title 4 */
 .cac-verdict-title {
+  margin: 0;
   font-size: var(--connie-type-title-4-size);
   font-weight: 600;
   line-height: var(--connie-type-title-4-line-height);
   letter-spacing: var(--connie-type-title-4-tracking);
-  color: var(--sds-color-text-default-default);
-  margin: 0;
+  color: var(--connie-color-foreground-primary);
 }
 
-/* ─── Subtitle — Utility 1 ────────────────────────────────────── */
-.cac-subtitle {
-  font-size: var(--connie-type-utility-1-size) !important;
-  font-weight: 400 !important;
-  line-height: var(--connie-type-utility-1-line-height) !important;
-  color: var(--sds-color-text-default-secondary);
-}
-
-/* ─── Evidence card ───────────────────────────────────────────── */
-.cac-evidence-card {
-  background: var(--sds-color-background-default-default);
-  border: 1px solid var(--sds-color-border-default-default);
-  border-radius: var(--connie-radius-small);
-  padding: var(--sds-size-space-400);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sds-size-space-200);
-}
-
-/* Source eyebrow — Utility 2 */
-.cac-source-eyebrow {
-  font-size: var(--connie-type-utility-2-size) !important;
-  font-weight: 600 !important;
-  line-height: var(--connie-type-utility-2-line-height) !important;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--sds-color-text-default-secondary);
-}
-
-/* Quote — Utility 1 */
-.cac-quote {
-  font-size: var(--connie-type-utility-1-size) !important;
-  line-height: var(--connie-type-utility-1-line-height) !important;
-  color: var(--sds-color-text-default-default);
-}
-
-/* Source chip — Utility 3 */
-.cac-source-chip {
-  align-self: flex-start;
-  display: inline-flex !important;
-  align-items: center;
-  gap: var(--connie-spacing-50);
-  font-size: var(--connie-type-utility-3-size) !important;
-}
-
-/* Close button — prevent flex shrink pushing it out */
+/* Close — 36×36 touch target. The Figma X is #c7c7c7, which is under 3:1
+   against the card, so the icon uses foreground-secondary instead. */
 .cac-close-btn {
   flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  margin: -8px -8px -6px 0; /* full touch target without pushing the subtitle down */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--connie-radius-small);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+.cac-close-btn:hover {
+  background: var(--connie-color-background-hover);
+}
+.cac-close-btn:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-primary);
+  outline-offset: 1px;
+}
+
+/* Utility 1 */
+.cac-subtitle {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-primary);
+}
+
+/* ─── Evidence ────────────────────────────────────────────────── */
+/* Cards keep their own height, as in the Figma */
+.cac-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-75);
+}
+
+.cac-evidence-card {
+  background: var(--connie-color-background-primary);
+  border: 0.5px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small);
+  padding: 17px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-100);
+  min-width: 0;
+}
+
+/* Source name and quote read as one unit */
+.cac-source-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cac-source-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cac-source-logo {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Utility 2 (Eyebrow) */
+.cac-source-name {
+  font-size: var(--connie-type-utility-2-size);
+  font-weight: 600;
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-primary);
+}
+
+/* Utility 3 */
+.cac-quote {
+  margin: 0;
+  font-size: var(--connie-type-utility-3-size);
+  line-height: var(--connie-type-utility-3-line-height);
+  color: var(--connie-color-foreground-primary);
+}
+
+/* Source chip — pill with link icon, label, and arrow */
+.cac-source-chip {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-50);
+  max-width: 100%;
+  padding: 2px 12px 2px 8px;
+  background: var(--connie-color-background-primary);
+  border: 0.5px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-2x-large);
+  color: var(--connie-color-foreground-primary);
+  font-size: var(--connie-type-chip-size);
+  line-height: var(--connie-type-chip-line-height);
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.cac-source-chip:hover {
+  background: var(--connie-color-background-hover);
+}
+.cac-source-chip:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-primary);
+  outline-offset: 1px;
+}
+.cac-chip-icon {
+  flex-shrink: 0;
+  color: var(--connie-color-foreground-secondary);
+}
+
+.cac-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* Add more sources — radius 2x-large */
 .cac-add-sources-btn {
-  border-radius: var(--connie-radius-2x-large) !important;
   align-self: flex-start;
+  border-radius: var(--connie-radius-2x-large) !important;
 }
 
-/* ─── Responsive: stack evidence on mobile ────────────────────── */
+/* ─── Narrow screens: stack evidence ──────────────────────────── */
 @media (max-width: 600px) {
-  .claim-annotation-card {
-    max-width: 100%;
-  }
-
   .cac-evidence-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
 }

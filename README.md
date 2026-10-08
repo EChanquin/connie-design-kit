@@ -26,11 +26,11 @@ Every state uses a distinct icon shape and title — state is never conveyed by 
 
 ## What I Built
 
-**`#connie`** — A 1440×900 stage that recreates the Figma prototype exactly: an Amazon stroller product page with two highlighted claims. Hovering the green highlight ("Versatile Design") opens the verified card; hovering the red highlight ("Comfortable & Adjustable") opens the misleading card. Cards stay open while the mouse moves from the highlight into the card so links can be clicked, and close on mouse leave, X, or Escape.
+**`#connie`** — A 1440×900 stage that recreates the Figma prototype: an Amazon stroller product page with two highlighted claims. Hovering the green highlight ("Versatile Design") opens the verified card; hovering the red highlight ("Comfortable & Adjustable") opens the misleading card. Cards stay open while the mouse moves from the highlight into the card so links can be clicked, and close on mouse leave, X, or Escape.
 
 **`#connie-states`** — A four-state demo page showing all card variants side by side, built with the SDS component library.
 
-**`ClaimAnnotationCard` in the component library** — The card lives in `src/ui/compositions` next to the SDS compositions, with Storybook stories for all four states (`npm run storybook`, then "Connie/Claim Annotation Card"). Connie's tokens live in `src/connie-theme.css`, and the agent reads the usage rules in `context/design-system/components/claim-annotation-card.md` before building with it.
+**`ClaimAnnotationCard` in the component library** — The `#connie` stage, the `#connie-states` page, and Storybook all render this one component. The card lives in `src/ui/compositions` next to the SDS compositions, with Storybook stories for all four states (`npm run storybook`, then "Connie/Claim Annotation Card"). Connie's tokens live in `src/connie-theme.css`, and the agent reads the usage rules in `context/design-system/components/claim-annotation-card.md` before building with it.
 
 See `case-study/` for before/after screenshots.
 

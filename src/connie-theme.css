@@ -19,8 +19,11 @@
   --connie-color-background-primary: #ffffff;
   --connie-color-background-secondary: #fafaf7;
 
+  --connie-color-background-hover: #f5f5f3;
+
   /* Color: border */
   --connie-color-border-subtle: #d8d9d4;
+  --connie-color-border-card: #c5c5c5; /* outer annotation card, Figma node 16:6796 */
 
   /* Shape */
   --connie-radius-small: 8px;
@@ -35,7 +38,8 @@
   --connie-spacing-100: 12px;
   --connie-spacing-300: 24px;
 
-  /* Typography (CR-Averta styles; falls back to the SDS sans) */
+  /* Typography (CR-Averta is licensed; falls back to the system sans) */
+  --connie-font-family: "CR-Averta", system-ui, -apple-system, sans-serif;
   --connie-type-title-4-size: 18px;
   --connie-type-title-4-line-height: 22px;
   --connie-type-title-4-tracking: -0.25px;
@@ -45,6 +49,8 @@
   --connie-type-utility-2-line-height: 16px;
   --connie-type-utility-3-size: 12px;
   --connie-type-utility-3-line-height: 17px;
+  --connie-type-chip-size: 10px;
+  --connie-type-chip-line-height: 20px;
 }
 
 /*
