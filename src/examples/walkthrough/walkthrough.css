@@ -170,8 +170,7 @@
 }
 
 /* ─── Static stages: Figma screen gallery ─────────────────────── */
-/* The exports are 720 x 450, so the window shows them at 880 x 550 at most.
-   Stretching them to the full 1440 stage is what made them blurry. */
+/* Screens come from 2x Figma exports (frames-2x/), shown at 1000 x 625 inside the stage. */
 .wt-gallery {
   position: absolute;
   inset: 0;
@@ -179,7 +178,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--connie-spacing-300);
+  gap: var(--connie-spacing-200);
   background: var(--connie-color-background-tertiary);
 }
 .wt-gallery-head {
@@ -210,7 +209,7 @@
 .wt-gallery-row {
   display: flex;
   align-items: center;
-  gap: var(--connie-spacing-400);
+  gap: var(--connie-spacing-300);
 }
 .wt-window {
   margin: 0;
@@ -237,8 +236,8 @@
 }
 .wt-window img {
   display: block;
-  width: 880px;
-  height: 550px;
+  width: 1000px;
+  height: 625px;
 }
 .wt-gallery-arrow {
   width: 52px;

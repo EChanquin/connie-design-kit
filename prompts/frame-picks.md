@@ -42,3 +42,7 @@ Figma file `seIFNV68pokebhWO9F0OS9`, page `16:2`.
 ## Storyboard notes
 - Navi bar frames (`40:2108` to `40:2269`) are grayscale wireframes. They stay as the source for `ConnieNavBar` but aren't storyboard panels.
 - 57 frames in 9 stages. Data lives in `src/examples/storyboard/storyboardData.ts`.
+
+## Sharp exports
+- 2x PNGs exported by hand from Figma live in `figma-exports/` (not committed). Converted copies are in `src/examples/storyboard/frames-2x/`.
+- Still missing a 2x export: "T3 — Tooltip · Step 4" (16:1572). It falls back to the storyboard thumbnail.

@@ -4,11 +4,16 @@ import type { StoryboardStage } from "../storyboard/storyboardData";
 import { Stage } from "./Stage";
 
 const FRAME_IMAGES = import.meta.glob<string>("../storyboard/frames/*.jpg", { eager: true, import: "default" });
-const frameSrc = (nodeId: string) => FRAME_IMAGES[`../storyboard/frames/${nodeId.replace(":", "-")}.jpg`];
+// Sharp 2x exports from Figma, where we have them. Others fall back to the storyboard thumbnails.
+const FRAME_IMAGES_2X = import.meta.glob<string>("../storyboard/frames-2x/*.jpg", { eager: true, import: "default" });
+const frameSrc = (nodeId: string) => {
+  const file = `${nodeId.replace(":", "-")}.jpg`;
+  return FRAME_IMAGES_2X[`../storyboard/frames-2x/${file}`] ?? FRAME_IMAGES[`../storyboard/frames/${file}`];
+};
 
 /**
  * A stage that isn't built yet. Shows the team's Figma screens as a gallery: the current
- * screen in a browser window, sized so the export stays sharp, and a filmstrip of the rest.
+ * screen in a browser window and a filmstrip of the rest.
  * Labeled so nobody mistakes the screens for live UI.
  */
 export function StaticStage({ stage }: { stage: StoryboardStage }) {
@@ -55,8 +60,8 @@ export function StaticStage({ stage }: { stage: StoryboardStage }) {
             <img
               src={frameSrc(frame.nodeId)}
               alt={`Figma screen ${frame.nodeId}, ${frame.caption}`}
-              width={880}
-              height={550}
+              width={1000}
+              height={625}
             />
           </figure>
 
