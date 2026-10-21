@@ -49,3 +49,24 @@
 **Solution:** Brought the library card back to the Figma (nodes 16:6796 and 16:6860), then made the stage render it. One component now backs the demo, the states page, and Storybook.
 **Rule for next time:** A design gets one implementation. If a demo needs the component, import it. Before changing a library component, compare it to the Figma frame, not to the last version of the code.
 
+
+## 2026-10 — The Figma read limit ran out halfway through the build
+
+**What happened:** The Figma account is on the Starter plan, which caps MCP calls. Screenshots for the storyboard, one at a time and five per call, used most of the budget. The cap hit after the Product Insight Card's design context was read, so Priority Chips and Decision Support were built from screenshots and the team prototype instead.
+**What went wrong:** The two components with the least Figma data are the ones most likely to drift from the design.
+**Solution:** Batch reads. One `use_figma` call can export every icon in a frame as SVG strings (`exportAsync({ format: "SVG_STRING" })`) and read every text node, which replaces dozens of asset downloads. Pull design context for every component before spending calls on screenshots.
+**Rule for next time:** Before a multi-component build, list the Figma reads it needs and do the design-context reads first. Screenshots for review come last.
+
+## 2026-10 — Figma copy can carry placeholder text
+
+**What happened:** In the Not Recommended frame, "Low Rated" and "Bumpy Ride" reuse the summaries from "Top Rated" and "Ride in Comfort", which say the opposite.
+**What went wrong:** Copying the frame verbatim would have shipped a drawback card that praises the product.
+**Solution:** Fixtures use copy that fits each label, with a comment pointing at the Figma line it replaces.
+**Rule for next time:** Read every label against its sentence before copying a frame's text. Note any change in the component doc.
+
+## 2026-10 — Figma colors failed contrast on tinted fills
+
+**What happened:** Brand green on light green (#00803e on #daede0) is 4.1:1, and green or gray on the light gray fill is 3.6 to 4.1:1. All three appear in Decision Support and Priority Chips.
+**What went wrong:** Small text on those fills falls under WCAG 1.4.3.
+**Solution:** Added `--connie-color-foreground-brand-on-tint` (#006b33) and `--connie-color-foreground-secondary-on-tint` (#55554f) for text on tinted fills. The fills themselves are unchanged.
+**Rule for next time:** Check contrast for every text and fill pair a new component introduces, not only text on white.

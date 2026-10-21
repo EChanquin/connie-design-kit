@@ -1,0 +1,205 @@
+/*
+ * priorityChips.css
+ * Priority Cards Bento Grid from the Connie Figma (Vision Board, 16:2325 inside 16:2306;
+ * boosted state in 16:2841). Sizes are from Figma metadata: grid 402 wide, chips 195 x 90,
+ * 12 gap, 40px icon disc, 20px rank badge.
+ */
+
+.priority-chips {
+  font-family: var(--connie-font-family);
+  color: var(--connie-color-foreground-primary);
+}
+
+.pc-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 402px;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--connie-spacing-100);
+}
+
+.pc-chip {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+  padding: 13px var(--connie-spacing-100);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small);
+  overflow: hidden;
+}
+
+/* Kept after tailoring: a firm outline */
+.pc-chip--confirmed {
+  border: 1.5px solid var(--connie-color-foreground-primary);
+}
+
+/* Raised by something Maya said. The reason line and sparkle carry it, not only the green. */
+.pc-chip--boosted {
+  background: var(--connie-color-background-brand-muted);
+  border: 1.5px solid var(--connie-color-foreground-brand);
+}
+
+.pc-chip--removed {
+  border-style: dashed;
+  border-color: var(--connie-color-border-strong);
+  background: var(--connie-color-background-secondary);
+  color: var(--connie-color-foreground-secondary);
+}
+
+.pc-rank {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-secondary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  font-size: var(--connie-type-chip-size);
+  line-height: 1;
+  font-weight: 600;
+}
+
+.pc-sparkle {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  opacity: 0.6;
+}
+
+.pc-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-primary);
+}
+.pc-chip--boosted .pc-icon {
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+.pc-chip--removed .pc-icon {
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* Utility 2 */
+.pc-label {
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+  text-align: center;
+}
+.pc-chip--removed .pc-label {
+  text-decoration: line-through;
+}
+
+.pc-reason {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-25);
+  margin-top: calc(-1 * var(--connie-spacing-50));
+  font-size: var(--connie-type-chip-size);
+  line-height: 14px;
+  letter-spacing: -0.1px;
+  white-space: nowrap;
+  color: var(--connie-color-foreground-brand-on-tint);
+  text-align: center;
+}
+.pc-reason--removed {
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* ─── Edit controls (Maya stays in control) ─────────────────── */
+.pc-controls {
+  display: flex;
+  gap: var(--connie-spacing-50);
+}
+.pc-control {
+  min-width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--connie-spacing-25);
+  padding: 0 var(--connie-spacing-50);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-primary);
+  font: inherit;
+  font-size: var(--connie-type-utility-2-size);
+  font-weight: 600;
+  cursor: pointer;
+}
+.pc-control--text {
+  padding: 0 var(--connie-spacing-100);
+}
+.pc-control:hover:not(:disabled) {
+  background: var(--connie-color-background-hover);
+}
+.pc-control:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pc-control:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+/* ─── Loading ───────────────────────────────────────────────── */
+.pc-chip--skeleton {
+  justify-content: center;
+}
+.pc-skeleton {
+  display: block;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-gradient-highlight), var(--connie-color-background-tertiary);
+  background-size: 200% 100%;
+  animation: pc-shimmer 1.4s ease-in-out infinite;
+}
+.pc-skeleton--icon {
+  width: 40px;
+  height: 40px;
+}
+.pc-skeleton--label {
+  width: 64px;
+  height: 12px;
+}
+@keyframes pc-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pc-skeleton {
+    animation: none;
+  }
+}
+
+.pc-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
