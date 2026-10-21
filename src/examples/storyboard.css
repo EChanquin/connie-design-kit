@@ -1,0 +1,210 @@
+/*
+ * storyboard.css
+ * #storyboard route. Reads Connie tokens only (src/connie-theme.css).
+ */
+
+.sb-page {
+  min-height: 100vh;
+  background: var(--connie-color-background-tertiary);
+  color: var(--connie-color-foreground-primary);
+  font-family: var(--connie-font-family);
+  padding: calc(var(--connie-spacing-300) * 2) var(--connie-spacing-300);
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.sb-header {
+  max-width: 760px;
+  margin-bottom: calc(var(--connie-spacing-300) * 1.5);
+}
+
+.sb-eyebrow,
+.sb-step-number,
+.sb-lines dt {
+  margin: 0;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+
+.sb-eyebrow {
+  color: var(--connie-color-foreground-brand);
+}
+
+.sb-title {
+  margin: var(--connie-spacing-75) 0 var(--connie-spacing-100);
+  font-size: var(--connie-type-title-1-size);
+  line-height: var(--connie-type-title-1-line-height);
+  letter-spacing: var(--connie-type-title-1-tracking);
+  font-weight: 600;
+}
+
+.sb-intro {
+  margin: 0 0 var(--connie-spacing-100);
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+}
+
+.sb-credit {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* ─── Stages ─────────────────────────────────────────────── */
+.sb-stages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-100);
+}
+
+.sb-stage {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: var(--connie-spacing-300);
+  padding: var(--connie-spacing-300);
+  background: var(--connie-color-background-secondary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-medium);
+}
+
+.sb-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-75);
+}
+
+.sb-step {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+}
+
+.sb-step-number {
+  color: var(--connie-color-foreground-secondary);
+}
+
+.sb-workflow {
+  padding: var(--connie-spacing-25) var(--connie-spacing-75);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-2x-large);
+  background: var(--connie-color-background-primary);
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+}
+
+.sb-stage-title {
+  margin: 0;
+  font-size: var(--connie-type-title-3-size);
+  line-height: var(--connie-type-title-3-line-height);
+  letter-spacing: var(--connie-type-title-3-tracking);
+  font-weight: 600;
+}
+
+.sb-lines {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-75);
+}
+
+.sb-lines dt {
+  color: var(--connie-color-foreground-secondary);
+}
+
+.sb-lines dd {
+  margin: var(--connie-spacing-25) 0 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+
+/* Status is carried by the text, not the green fill (WCAG 1.4.1) */
+.sb-live {
+  align-self: flex-start;
+  margin-top: var(--connie-spacing-50);
+  padding: var(--connie-spacing-50) var(--connie-spacing-100);
+  border-radius: var(--connie-radius-2x-large);
+  background: var(--connie-color-background-brand-muted);
+  color: var(--connie-color-foreground-primary);
+  font-size: var(--connie-type-utility-3-size);
+  line-height: var(--connie-type-utility-3-line-height);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.sb-live:focus-visible,
+.sb-strip:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+/* ─── Frame strip ────────────────────────────────────────── */
+.sb-strip {
+  overflow-x: auto;
+  border-radius: var(--connie-radius-small);
+}
+
+.sb-frames {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 var(--connie-spacing-75);
+  display: flex;
+  gap: var(--connie-spacing-100);
+}
+
+.sb-frame {
+  flex: 0 0 240px;
+}
+
+.sb-frame-img {
+  display: block;
+  width: 240px;
+  height: 150px;
+  border: 1px solid var(--connie-color-border-strong);
+  border-radius: var(--connie-radius-small);
+  background: var(--connie-color-background-primary);
+}
+
+.sb-frame-caption {
+  margin: var(--connie-spacing-75) 0 0;
+  display: flex;
+  gap: var(--connie-spacing-50);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+}
+
+.sb-frame-index {
+  color: var(--connie-color-foreground-secondary);
+  font-weight: 400;
+}
+
+.sb-frame-node {
+  margin: var(--connie-spacing-25) 0 0;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+
+.sb-disclaimer {
+  margin: var(--connie-spacing-300) 0 0;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .sb-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

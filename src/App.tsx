@@ -2,6 +2,7 @@ import { Footer, Header } from "compositions";
 import { AllProviders } from "data";
 import { ClaimAnnotationCardDemo } from "./examples/ClaimAnnotationCardDemo";
 import { ConnieStage } from "./examples/ConnieStage";
+import { Storyboard } from "./examples/Storyboard";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
         <Footer />
       </AllProviders>
     );
+  }
+
+  if (hash === "#storyboard") {
+    return <Storyboard />;
   }
 
   // Default (no hash, #connie, or anything else) → ConnieStage
