@@ -24,6 +24,9 @@ export function Storyboard() {
           apartment.
         </p>
         <p className="sb-credit">Screens designed by the Connie team. Storyboard and build by Edward Chanquin.</p>
+        <a className="sb-walk" href="#install">
+          Step through it in the live walkthrough
+        </a>
       </header>
 
       <ol className="sb-stages">

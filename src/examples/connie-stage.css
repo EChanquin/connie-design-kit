@@ -208,3 +208,11 @@
   color: #999994;
   text-align: center;
 }
+
+.cs-journey-link {
+  margin-left: 8px;
+  color: var(--connie-color-foreground-brand);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

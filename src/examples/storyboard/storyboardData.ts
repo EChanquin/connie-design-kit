@@ -67,6 +67,7 @@ export const STORYBOARD_STAGES: StoryboardStage[] = [
   },
   {
     id: "insights",
+    liveHref: "#insights",
     workflow: "Observe / Understand",
     title: "Sees whether a stroller fits her",
     maya: "Maya taps the star on a stroller she likes.",
@@ -85,7 +86,7 @@ export const STORYBOARD_STAGES: StoryboardStage[] = [
     title: "Checks a marketing claim",
     maya: "Maya doubts the listing's claim about a padded, comfortable seat.",
     connie: "Connie checks the claim against CR tests and owner reports, and says so when it can't tell.",
-    liveHref: "#connie",
+    liveHref: "#claims",
     frames: [
       { nodeId: "16:1880", caption: "Claims highlighted" },
       { nodeId: "16:6702", caption: "Checking" },
@@ -97,6 +98,7 @@ export const STORYBOARD_STAGES: StoryboardStage[] = [
   },
   {
     id: "priorities",
+    liveHref: "#priorities",
     workflow: "Understand",
     title: "Connie learns her priorities",
     maya: "Maya answers two questions about her walk-up apartment and her bus commute.",
@@ -115,6 +117,7 @@ export const STORYBOARD_STAGES: StoryboardStage[] = [
   },
   {
     id: "decide",
+    liveHref: "#decide",
     workflow: "Support Decision",
     title: "Compares her shortlist",
     maya: "Maya puts her saved strollers side by side.",

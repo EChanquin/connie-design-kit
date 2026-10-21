@@ -1,15 +1,12 @@
-import { ClaimAnnotationCard, SOURCE_LOGOS, type EvidenceItem } from "compositions";
+import {
+  ClaimAnnotationCard,
+  SOURCE_LOGOS,
+  type EvidenceItem,
+} from "compositions";
 import { useEffect, useRef, useState } from "react";
-import bgScreenshot from "./connie-stage/bg-screenshot.png";
-import cButtonBg from "./connie-stage/c-button-bg.svg";
-import cButtonDot from "./connie-stage/c-button-dot.svg";
-import cButtonStar from "./connie-stage/c-button-star.svg";
-import iconChat from "./connie-stage/icon-chat.svg";
-import iconGear from "./connie-stage/icon-gear.svg";
-import iconHeart from "./connie-stage/icon-heart.svg";
-import iconLine from "./connie-stage/icon-line.svg";
-import iconQuestion from "./connie-stage/icon-question.svg";
 import "./connie-stage.css";
+import bgScreenshot from "./connie-stage/bg-screenshot.png";
+import { StageChrome } from "./walkthrough/StageChrome";
 
 // ─── Card content (Figma nodes 16:6796 and 16:6860) ──────────────────────────
 // The cards themselves are the library ClaimAnnotationCard. Only the copy lives here.
@@ -18,7 +15,8 @@ const MISLEADING_EVIDENCE: EvidenceItem[] = [
   {
     sourceType: "cr",
     sourceName: "Consumer Reports",
-    quote: "Seat cushioning compressed quickly and offered little support during longer rides.",
+    quote:
+      "Seat cushioning compressed quickly and offered little support during longer rides.",
     linkLabel: "Baby Trend Stroller Review",
     href: "https://www.consumerreports.org",
   },
@@ -37,7 +35,8 @@ const VERIFIED_EVIDENCE: EvidenceItem[] = [
   {
     sourceType: "cr",
     sourceName: "Consumer Reports",
-    quote: "Testers found it very maneuverable; it's a breeze to navigate through crowded spaces.",
+    quote:
+      "Testers found it very maneuverable; it's a breeze to navigate through crowded spaces.",
     linkLabel: "Baby Trend Stroller Review",
     href: "https://www.consumerreports.org",
   },
@@ -53,24 +52,37 @@ const VERIFIED_EVIDENCE: EvidenceItem[] = [
 
 // ─── Stage ────────────────────────────────────────────────────────────────────
 // 1440×900 fixed canvas matching Figma frame 16:6784 / 16:6848
-export function ConnieStage() {
-  const [openCard, setOpenCard] = useState<"misleading" | "verified" | null>(null);
+type ConnieStageProps = {
+  /** Height taken above the stage, e.g. by the walkthrough stepper */
+  topOffset?: number;
+};
+
+export function ConnieStage({ topOffset = 0 }: ConnieStageProps = {}) {
+  const [openCard, setOpenCard] = useState<"misleading" | "verified" | null>(
+    null,
+  );
   const [scale, setScale] = useState(1);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const compute = () => {
       // Reserve 40px below the stage for the disclaimer
-      const s = Math.min(window.innerWidth / 1440, (window.innerHeight - 40) / 900, 1);
+      const s = Math.min(
+        window.innerWidth / 1440,
+        (window.innerHeight - topOffset - 40) / 900,
+        1,
+      );
       setScale(s);
     };
     compute();
     window.addEventListener("resize", compute);
     return () => window.removeEventListener("resize", compute);
-  }, []);
+  }, [topOffset]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -95,7 +107,10 @@ export function ConnieStage() {
   const scaledH = Math.round(900 * scale);
 
   return (
-    <div className="connie-stage-wrapper">
+    <div
+      className="connie-stage-wrapper"
+      style={topOffset ? { height: `calc(100vh - ${topOffset}px)` } : undefined}
+    >
       <div style={{ width: scaledW, height: scaledH, flexShrink: 0 }}>
         <div
           className="connie-stage"
@@ -130,26 +145,8 @@ export function ConnieStage() {
             aria-expanded={openCard === "misleading"}
           />
 
-          {/* Layer 4: NaviBar */}
-          <div className="cs-navibar" aria-hidden>
-            <div className="cs-navibar-group">
-              <img src={iconChat} width={40} height={40} alt="" />
-              <img src={iconHeart} width={40} height={40} alt="" />
-            </div>
-            <img src={iconLine} width={40} height={0} alt="" className="cs-navibar-divider" />
-            <div className="cs-navibar-group">
-              <img src={iconGear} width={40} height={40} alt="" />
-              <img src={iconQuestion} width={40} height={40} alt="" />
-            </div>
-          </div>
-
-          {/* Layer 5: Connie C button */}
-          <div className="cs-c-button" aria-hidden>
-            <img src={cButtonBg} width={60} height={60} alt="" className="cs-c-bg" />
-            <span className="cs-c-letter">C</span>
-            <img src={cButtonStar} width={16} height={16} alt="" className="cs-c-star" />
-            <img src={cButtonDot} width={14} height={14} alt="" className="cs-c-dot" />
-          </div>
+          {/* Layers 4 and 5: nav rail and C button */}
+          <StageChrome />
 
           {/* Layer 6: Verified card — Figma: left 862, top 215 */}
           {openCard === "verified" && (
@@ -158,7 +155,12 @@ export function ConnieStage() {
               onMouseEnter={cancelClose}
               onMouseLeave={scheduleClose}
             >
-              <ClaimAnnotationCard claim={VERIFIED_CLAIM} status="verified" evidence={VERIFIED_EVIDENCE} onClose={close} />
+              <ClaimAnnotationCard
+                claim={VERIFIED_CLAIM}
+                status="verified"
+                evidence={VERIFIED_EVIDENCE}
+                onClose={close}
+              />
             </div>
           )}
 
@@ -169,14 +171,27 @@ export function ConnieStage() {
               onMouseEnter={cancelClose}
               onMouseLeave={scheduleClose}
             >
-              <ClaimAnnotationCard claim={MISLEADING_CLAIM} status="misleading" evidence={MISLEADING_EVIDENCE} onClose={close} />
+              <ClaimAnnotationCard
+                claim={MISLEADING_CLAIM}
+                status="misleading"
+                evidence={MISLEADING_EVIDENCE}
+                onClose={close}
+              />
             </div>
           )}
-
         </div>
       </div>
       <p className="cs-disclaimer">
-        Prototype with synthetic data. Verdicts and quotes are illustrative and do not reflect real test results.
+        Prototype with synthetic data. Verdicts and quotes are illustrative and
+        do not reflect real test results.
+        {!topOffset && (
+          <>
+            {" "}
+            <a className="cs-journey-link" href="#install">
+              Walk through Maya's whole journey
+            </a>
+          </>
+        )}
       </p>
     </div>
   );
