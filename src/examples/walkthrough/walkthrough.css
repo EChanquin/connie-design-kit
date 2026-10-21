@@ -87,7 +87,6 @@
 }
 .wt-step-btn:focus-visible,
 .wt-star:focus-visible,
-.wt-frame-nav button:focus-visible,
 .wt-start-card:focus-visible,
 .wt-option:focus-visible,
 .wt-primary:focus-visible,
@@ -111,8 +110,7 @@
 .wt-stage {
   position: relative;
 }
-.wt-bg,
-.wt-static-img {
+.wt-bg {
   position: absolute;
   inset: 0;
   width: 1440px;
@@ -171,11 +169,26 @@
   overflow-y: auto;
 }
 
-/* Static stages are labeled so nobody mistakes them for live UI */
-.wt-static-label {
+/* ─── Static stages: Figma screen gallery ─────────────────────── */
+/* The exports are 720 x 450, so the window shows them at 880 x 550 at most.
+   Stretching them to the full 1440 stage is what made them blurry. */
+.wt-gallery {
   position: absolute;
-  bottom: var(--connie-spacing-300);
-  left: var(--connie-spacing-300);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--connie-spacing-300);
+  background: var(--connie-color-background-tertiary);
+}
+.wt-gallery-head {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-200);
+}
+.wt-gallery-tag {
   padding: var(--connie-spacing-50) var(--connie-spacing-200);
   border-radius: var(--connie-radius-pill);
   background: var(--connie-color-foreground-primary);
@@ -183,34 +196,53 @@
   font-size: var(--connie-type-utility-1-size);
   line-height: var(--connie-type-utility-1-line-height);
   font-weight: 600;
-  opacity: 0.85;
 }
-.wt-frame-nav {
-  position: absolute;
-  bottom: var(--connie-spacing-300);
-  left: 50%;
-  transform: translateX(-50%);
+.wt-gallery-caption {
+  font-size: var(--connie-type-title-3-size);
+  line-height: var(--connie-type-title-3-line-height);
+  letter-spacing: var(--connie-type-title-3-tracking);
+  font-weight: 600;
+}
+.wt-gallery-count {
+  color: var(--connie-color-foreground-secondary);
+  font-weight: 400;
+}
+.wt-gallery-row {
   display: flex;
   align-items: center;
-  gap: var(--connie-spacing-200);
-  padding: var(--connie-spacing-75);
+  gap: var(--connie-spacing-400);
+}
+.wt-window {
+  margin: 0;
+  overflow: hidden;
   background: var(--connie-color-background-primary);
   border: 1px solid var(--connie-color-border-subtle);
-  border-radius: var(--connie-radius-pill);
+  border-radius: var(--connie-radius-small-medium);
   box-shadow: var(--connie-shadow-card);
-  color: var(--connie-color-foreground-primary);
-  font-size: var(--connie-type-body-size);
-  line-height: var(--connie-type-body-line-height);
-  font-weight: 600;
-  white-space: nowrap;
 }
-.wt-frame-nav span {
-  min-width: 240px;
-  text-align: center;
+.wt-window-bar {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 var(--connie-spacing-100);
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+  background: var(--connie-color-background-secondary);
 }
-.wt-frame-nav button {
-  width: 44px;
-  height: 44px;
+.wt-window-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-border-subtle);
+}
+.wt-window img {
+  display: block;
+  width: 880px;
+  height: 550px;
+}
+.wt-gallery-arrow {
+  width: 52px;
+  height: 52px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -221,13 +253,45 @@
   color: var(--connie-color-background-primary);
   cursor: pointer;
 }
-.wt-frame-nav button:hover:not(:disabled) {
+.wt-gallery-arrow:hover:not(:disabled) {
   background: var(--connie-color-foreground-brand-on-tint);
 }
-.wt-frame-nav button:disabled {
-  background: var(--connie-color-background-tertiary);
-  color: var(--connie-color-foreground-secondary);
+.wt-gallery-arrow:disabled {
+  background: var(--connie-color-background-primary);
+  color: var(--connie-color-border-strong);
   cursor: default;
+}
+.wt-filmstrip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--connie-spacing-100);
+}
+.wt-film {
+  display: block;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--connie-radius-small);
+  background: none;
+  overflow: hidden;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.wt-film img {
+  display: block;
+}
+.wt-film:hover {
+  opacity: 1;
+}
+.wt-film[aria-current="step"] {
+  border-color: var(--connie-color-foreground-brand);
+  opacity: 1;
+}
+.wt-gallery-arrow:focus-visible,
+.wt-film:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
 }
 
 /* ─── Caption ───────────────────────────────────────────────── */

@@ -3,16 +3,13 @@ import { ArrowLeftIcon, ArrowRightIcon } from "../../ui/compositions/connie/phos
 import type { StoryboardStage } from "../storyboard/storyboardData";
 import { Stage } from "./Stage";
 
-const FRAME_IMAGES = import.meta.glob<string>("../storyboard/frames/*.jpg", {
-  eager: true,
-  import: "default",
-});
-const frameSrc = (nodeId: string) =>
-  FRAME_IMAGES[`../storyboard/frames/${nodeId.replace(":", "-")}.jpg`];
+const FRAME_IMAGES = import.meta.glob<string>("../storyboard/frames/*.jpg", { eager: true, import: "default" });
+const frameSrc = (nodeId: string) => FRAME_IMAGES[`../storyboard/frames/${nodeId.replace(":", "-")}.jpg`];
 
 /**
- * A stage that isn't built yet. Shows the team's Figma screens in order, labeled so
- * nobody mistakes them for live UI.
+ * A stage that isn't built yet. Shows the team's Figma screens as a gallery: the current
+ * screen in a browser window, sized so the export stays sharp, and a filmstrip of the rest.
+ * Labeled so nobody mistakes the screens for live UI.
  */
 export function StaticStage({ stage }: { stage: StoryboardStage }) {
   const [i, setI] = useState(0);
@@ -22,39 +19,78 @@ export function StaticStage({ stage }: { stage: StoryboardStage }) {
 
   return (
     <Stage label={`${stage.title}, Figma screen ${i + 1} of ${count}`}>
-      <img
-        className="wt-static-img"
-        src={frameSrc(frame.nodeId)}
-        alt={`Figma screen ${frame.nodeId}, ${frame.caption}`}
-        width={1440}
-        height={900}
-      />
-      <div className="wt-static-label" aria-hidden>
-        Figma screen · not built yet
-      </div>
-      {count > 1 && (
-        <div className="wt-frame-nav">
-          <button
-            type="button"
-            onClick={() => setI(i - 1)}
-            disabled={i === 0}
-            aria-label="Previous screen"
-          >
-            <ArrowLeftIcon size={20} />
-          </button>
-          <span aria-live="polite">
-            {frame.caption} · {i + 1} of {count}
+      <div className="wt-gallery">
+        <p className="wt-gallery-head" aria-live="polite">
+          <span className="wt-gallery-tag">Figma screen · not built yet</span>
+          <span className="wt-gallery-caption">
+            {frame.caption}
+            {count > 1 && (
+              <span className="wt-gallery-count">
+                {" "}
+                · {i + 1} of {count}
+              </span>
+            )}
           </span>
-          <button
-            type="button"
-            onClick={() => setI(i + 1)}
-            disabled={i === count - 1}
-            aria-label="Next screen"
-          >
-            <ArrowRightIcon size={20} />
-          </button>
+        </p>
+
+        <div className="wt-gallery-row">
+          {count > 1 && (
+            <button
+              type="button"
+              className="wt-gallery-arrow"
+              onClick={() => setI(i - 1)}
+              disabled={i === 0}
+              aria-label="Previous screen"
+            >
+              <ArrowLeftIcon size={22} />
+            </button>
+          )}
+
+          <figure className="wt-window">
+            <span className="wt-window-bar" aria-hidden>
+              <span />
+              <span />
+              <span />
+            </span>
+            <img
+              src={frameSrc(frame.nodeId)}
+              alt={`Figma screen ${frame.nodeId}, ${frame.caption}`}
+              width={880}
+              height={550}
+            />
+          </figure>
+
+          {count > 1 && (
+            <button
+              type="button"
+              className="wt-gallery-arrow"
+              onClick={() => setI(i + 1)}
+              disabled={i === count - 1}
+              aria-label="Next screen"
+            >
+              <ArrowRightIcon size={22} />
+            </button>
+          )}
         </div>
-      )}
+
+        {count > 1 && (
+          <ol className="wt-filmstrip" aria-label="All screens in this step">
+            {stage.frames.map((f, j) => (
+              <li key={f.nodeId}>
+                <button
+                  type="button"
+                  className="wt-film"
+                  aria-current={j === i ? "step" : undefined}
+                  aria-label={`Screen ${j + 1}, ${f.caption}`}
+                  onClick={() => setI(j)}
+                >
+                  <img src={frameSrc(f.nodeId)} alt="" width={112} height={70} />
+                </button>
+              </li>
+            ))}
+          </ol>
+        )}
+      </div>
     </Stage>
   );
 }
