@@ -150,6 +150,7 @@ export const STORYBOARD_STAGES: StoryboardStage[] = [
   },
   {
     id: "check-in",
+    liveHref: "#check-in",
     workflow: "After purchase",
     title: "Connie checks in",
     maya: "Three weeks later, Maya is shopping for baby bottles.",

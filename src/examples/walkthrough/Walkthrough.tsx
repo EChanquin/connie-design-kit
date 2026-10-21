@@ -4,6 +4,7 @@ import {
   STORYBOARD_STAGES,
   type StoryboardStage,
 } from "../storyboard/storyboardData";
+import { CheckInStage } from "./CheckInStage";
 import { DecideStage } from "./DecideStage";
 import { InsightsStage } from "./InsightsStage";
 import { PrioritiesStage } from "./PrioritiesStage";
@@ -15,6 +16,7 @@ const LIVE: Record<string, () => ReactNode> = {
   insights: () => <InsightsStage />,
   priorities: () => <PrioritiesStage />,
   decide: () => <DecideStage />,
+  "check-in": () => <CheckInStage />,
 };
 
 /** The walkthrough's routes, in journey order. "#claims" is the existing claim stage. */

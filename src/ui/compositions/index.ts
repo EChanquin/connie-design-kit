@@ -9,3 +9,4 @@ export * from "./SourceBadge/SourceBadge";
 export * from "./ProductInsightCard/ProductInsightCard";
 export * from "./PriorityChips/PriorityChips";
 export * from "./DecisionSupport/DecisionSupport";
+export * from "./CheckInCard/CheckInCard";

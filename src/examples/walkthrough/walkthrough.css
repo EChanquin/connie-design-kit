@@ -192,32 +192,41 @@
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: var(--connie-spacing-100);
+  gap: var(--connie-spacing-200);
   padding: var(--connie-spacing-75);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
   border-radius: var(--connie-radius-pill);
-  background: var(--connie-color-foreground-primary);
-  color: var(--connie-color-background-primary);
+  box-shadow: var(--connie-shadow-card);
+  color: var(--connie-color-foreground-primary);
   font-size: var(--connie-type-body-size);
   line-height: var(--connie-type-body-line-height);
   font-weight: 600;
   white-space: nowrap;
 }
 .wt-frame-nav span {
-  min-width: 260px;
+  min-width: 240px;
   text-align: center;
 }
 .wt-frame-nav button {
   width: 44px;
   height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border: none;
   border-radius: var(--connie-radius-pill);
-  background: var(--connie-color-background-primary);
-  color: var(--connie-color-foreground-primary);
-  font-size: var(--connie-type-title-4-size);
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
   cursor: pointer;
 }
+.wt-frame-nav button:hover:not(:disabled) {
+  background: var(--connie-color-foreground-brand-on-tint);
+}
 .wt-frame-nav button:disabled {
-  opacity: 0.35;
+  background: var(--connie-color-background-tertiary);
+  color: var(--connie-color-foreground-secondary);
   cursor: default;
 }
 
@@ -476,4 +485,46 @@
   border-radius: var(--connie-radius-pill);
   background: var(--connie-color-foreground-primary);
   color: var(--connie-color-background-primary);
+}
+
+/* ─── Check-in stage (Figma 16:3966) ─────────────────────────── */
+.wt-scrim--light {
+  opacity: 0.25;
+}
+.wt-checkin-anchor {
+  position: absolute;
+  top: 20px;
+  left: 900px;
+}
+.wt-restart {
+  position: absolute;
+  left: 900px;
+  bottom: 6px;
+  padding: var(--connie-spacing-50) var(--connie-spacing-100);
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: var(--connie-type-utility-2-size);
+  color: var(--connie-color-foreground-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.wt-reopen {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: 44px;
+  padding: 0 var(--connie-spacing-200);
+  border: none;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wt-reopen:focus-visible,
+.wt-restart:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
 }

@@ -12,6 +12,7 @@ Built on SDS for Connie. Use these before composing anything new from primitives
 | ProductInsightCard | Verdict on a product with expandable, labeled evidence. Rules in [product-insight-card.md](product-insight-card.md) | Showing whether a product fits the shopper | `import { ProductInsightCard } from "compositions"` |
 | PriorityChips | Ranked, editable priorities Connie inferred. Rules in [priority-chips.md](priority-chips.md) | Showing and correcting what Connie thinks matters | `import { PriorityChips } from "compositions"` |
 | DecisionSupportPanel, DecisionCard, DecisionTable | Ranked shortlist as cards or a table. Rules in [decision-support.md](decision-support.md) | Comparing saved products | `import { DecisionSupportPanel } from "compositions"` |
+| CheckInCard | Post-purchase check-in, one tap per question. Rules in [check-in-card.md](check-in-card.md) | Asking how a purchase went | `import { CheckInCard } from "compositions"` |
 | SourceLogo, SourceStack, SourceLink | Source logos and evidence chips shared by every card. Rules in [source-badge.md](source-badge.md) | Labeling where evidence came from | `import { SourceLink } from "compositions"` |
 
 ## Actions

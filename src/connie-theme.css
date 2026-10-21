@@ -35,6 +35,12 @@
   --connie-color-background-attention-muted: #fff0f4; /* DS reference 16:5174 */
   --connie-color-scroll-track: #e2e6e4;
   --connie-color-scroll-thumb: #c2c8c5;
+  /* Post-purchase check-in (Figma 16:3966 to 16:4307) */
+  --connie-color-background-warm: #f2eddb; /* thank-you note */
+  --connie-color-foreground-warm: #80610f;
+  --connie-color-icon-warm: #b8860b;
+  --connie-color-background-retailer: #fbf0c1; /* "AT AMAZON" tag */
+  --connie-color-foreground-retailer: #7a5c00;
   --connie-color-star-top: #d2ebe3; /* Recommended star gradient, Figma 16:5915 */
   --connie-color-star-bottom: #fff6dc;
   --connie-gradient-highlight: linear-gradient(90deg, rgba(217, 237, 226, 0.3), rgba(251, 245, 221, 0.3));

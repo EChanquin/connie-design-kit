@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArrowLeftIcon, ArrowRightIcon } from "../../ui/compositions/connie/phosphorIcons";
 import type { StoryboardStage } from "../storyboard/storyboardData";
 import { Stage } from "./Stage";
 
@@ -39,7 +40,7 @@ export function StaticStage({ stage }: { stage: StoryboardStage }) {
             disabled={i === 0}
             aria-label="Previous screen"
           >
-            ←
+            <ArrowLeftIcon size={20} />
           </button>
           <span aria-live="polite">
             {frame.caption} · {i + 1} of {count}
@@ -50,7 +51,7 @@ export function StaticStage({ stage }: { stage: StoryboardStage }) {
             disabled={i === count - 1}
             aria-label="Next screen"
           >
-            →
+            <ArrowRightIcon size={20} />
           </button>
         </div>
       )}
