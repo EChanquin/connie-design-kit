@@ -121,3 +121,20 @@
   --sds-color-border-brand-default: var(--connie-color-action-primary);
   --sds-color-text-brand-on-brand: var(--connie-color-action-on-primary);
 }
+
+/*
+ * Connie is a light-only design. The SDS kit underneath switches its tokens to dark when the
+ * system is in dark mode, which put Connie's dark text on a dark page. Pin the page to light.
+ */
+:root {
+  color-scheme: light;
+}
+html body {
+  background: var(--connie-color-background-primary);
+  color: var(--connie-color-foreground-primary);
+}
+.connie-theme {
+  color-scheme: light;
+  color: var(--connie-color-foreground-primary);
+}
+
