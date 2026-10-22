@@ -5,4 +5,7 @@ import theme from "./theme";
 
 addons.setConfig({
   theme: theme,
+  sidebar: { showRoots: false },
 });
+
+document.title = "Connie design system";

@@ -41,6 +41,7 @@
   --connie-color-icon-warm: #b8860b;
   --connie-color-background-retailer: #fbf0c1; /* "AT AMAZON" tag */
   --connie-color-foreground-retailer: #7a5c00;
+  --connie-color-launcher: #c4e860; /* Connie C button, Figma 16:1499 */
   --connie-color-star-top: #d2ebe3; /* Recommended star gradient, Figma 16:5915 */
   --connie-color-star-bottom: #fff6dc;
   --connie-gradient-highlight: linear-gradient(90deg, rgba(217, 237, 226, 0.3), rgba(251, 245, 221, 0.3));

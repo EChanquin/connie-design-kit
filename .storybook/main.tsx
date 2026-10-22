@@ -2,10 +2,9 @@ import type { StorybookConfig } from "@storybook/react-vite";
 import path from "path";
 
 const config: StorybookConfig = {
-  stories: [
-    "../src/stories/**/*.mdx",
-    "../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  // Only Connie's components. The SDS kit stories (src/stories/primitives, layout, ...) stay
+  // in the repo because Connie builds on those primitives, but they aren't part of this library.
+  stories: ["../src/stories/connie/**/*.stories.@(ts|tsx)"],
 
   addons: [
     "@storybook/addon-links",
