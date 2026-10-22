@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #f0f0ed;
+  background: var(--connie-color-background-tertiary);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -201,17 +201,18 @@
 .cs-disclaimer {
   flex-shrink: 0;
   padding: 10px 16px 0;
-  font-family: 'CR-Averta', system-ui, -apple-system, sans-serif;
-  font-size: 11px;
+  font-family: var(--connie-font-family);
+  font-size: var(--connie-type-utility-2-size);
   font-weight: 400;
-  line-height: 16px;
-  color: #999994;
+  line-height: var(--connie-type-utility-2-line-height);
+  /* Was #999994 at 11px, 2.5:1 on the page. Secondary text is 5.1:1. */
+  color: var(--connie-color-foreground-secondary);
   text-align: center;
 }
 
 .cs-journey-link {
   margin-left: 8px;
-  color: var(--connie-color-foreground-brand);
+  color: var(--connie-color-foreground-brand-on-tint);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;

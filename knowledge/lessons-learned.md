@@ -70,3 +70,10 @@
 **What went wrong:** Small text on those fills falls under WCAG 1.4.3.
 **Solution:** Added `--connie-color-foreground-brand-on-tint` (#006b33) and `--connie-color-foreground-secondary-on-tint` (#55554f) for text on tinted fills. The fills themselves are unchanged.
 **Rule for next time:** Check contrast for every text and fill pair a new component introduces, not only text on white.
+
+## 2026-10 — The SDS kit's dark mode broke Connie's contrast
+
+**What happened:** On a Mac in dark mode, the Storybook landing page showed dark text on a near-black page. The SDS kit switches its tokens to dark under `prefers-color-scheme: dark`, and the body background follows them, but Connie's text tokens are light-only.
+**What went wrong:** Every audit had run in light mode, so the failure only showed up on Edward's machine.
+**Solution:** `src/connie-theme.css` pins the page to light (`color-scheme: light` and a Connie body background). The axe audit now runs every page and story in both light and dark system settings, plus the interactive states (open popovers, played-through chats, hover).
+**Rule for next time:** Audit in both color schemes. Connie is light-only until it has its own dark tokens.

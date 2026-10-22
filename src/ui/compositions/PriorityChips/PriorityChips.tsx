@@ -83,6 +83,7 @@ export function PriorityChips({
     return (
       <div
         className={clsx("priority-chips connie-theme", className)}
+        role="status"
         aria-busy="true"
         aria-label="Working out your priorities"
       >

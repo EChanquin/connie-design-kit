@@ -483,8 +483,9 @@
   border-color: var(--connie-color-foreground-brand);
   color: var(--connie-color-background-primary);
 }
+/* Answers she didn't pick stay readable as part of the chat history */
 .wt-option:disabled:not([aria-pressed="true"]) {
-  opacity: 0.6;
+  color: var(--connie-color-foreground-secondary);
   cursor: default;
 }
 .wt-primary {

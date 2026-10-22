@@ -101,7 +101,7 @@ export function CheckInCard({
         )}
       </header>
 
-      <div className="cic-body" ref={body} aria-live="polite">
+      <div className="cic-body" ref={body} aria-live="polite" tabIndex={0} aria-label="Check-in conversation">
         {steps.map((step, i) => {
           const answered = step.answer !== undefined;
           return (
@@ -162,7 +162,7 @@ export function CheckInCard({
         })}
 
         {typing && (
-          <p className="cic-typing" aria-label="Connie is typing">
+          <p className="cic-typing" role="status" aria-label="Connie is typing">
             <span />
             <span />
             <span />

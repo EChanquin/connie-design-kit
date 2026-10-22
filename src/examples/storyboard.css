@@ -29,7 +29,7 @@
 }
 
 .sb-eyebrow {
-  color: var(--connie-color-foreground-brand);
+  color: var(--connie-color-foreground-brand-on-tint);
 }
 
 .sb-title {

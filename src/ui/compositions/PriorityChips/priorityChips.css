@@ -49,7 +49,7 @@
 
 .pc-chip--removed {
   border-style: dashed;
-  border-color: var(--connie-color-border-strong);
+  border-color: var(--connie-color-foreground-secondary);
   background: var(--connie-color-background-secondary);
   color: var(--connie-color-foreground-secondary);
 }
