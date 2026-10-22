@@ -20,6 +20,31 @@
   --connie-color-background-secondary: #fafaf7;
 
   --connie-color-background-hover: #f5f5f3;
+  --connie-color-background-tertiary: #f2f2ed; /* DS reference 16:5174 */
+  --connie-color-background-brand-muted: #daede0; /* DS reference 16:5174 */
+  --connie-color-border-strong: #989991; /* DS reference 16:5174 */
+
+  /* Color: Product Insights and Decision Support (Figma 16:1705, 16:3212) */
+  /* Accessible text on tinted fills. The Figma's #00803e on #daede0 or #d8d9d4, and #666661 on
+     #d8d9d4, fall under 4.5:1, so text on those fills uses these darker shades. */
+  --connie-color-foreground-brand-on-tint: #006b33;
+  --connie-color-foreground-secondary-on-tint: #55554f;
+  --connie-color-foreground-body: #282923; /* insight summaries */
+  --connie-color-foreground-muted: #585858; /* "LIKE THIS REC?" */
+  --connie-color-border-row: #dfdfd9; /* insight row dividers */
+  --connie-color-background-attention-muted: #fff0f4; /* DS reference 16:5174 */
+  --connie-color-scroll-track: #e2e6e4;
+  --connie-color-scroll-thumb: #c2c8c5;
+  /* Post-purchase check-in (Figma 16:3966 to 16:4307) */
+  --connie-color-background-warm: #f2eddb; /* thank-you note */
+  --connie-color-foreground-warm: #80610f;
+  --connie-color-icon-warm: #b8860b;
+  --connie-color-background-retailer: #fbf0c1; /* "AT AMAZON" tag */
+  --connie-color-foreground-retailer: #7a5c00;
+  --connie-color-launcher: #c4e860; /* Connie C button, Figma 16:1499 */
+  --connie-color-star-top: #d2ebe3; /* Recommended star gradient, Figma 16:5915 */
+  --connie-color-star-bottom: #fff6dc;
+  --connie-gradient-highlight: linear-gradient(90deg, rgba(217, 237, 226, 0.3), rgba(251, 245, 221, 0.3));
 
   /* Color: action (primary button, "Unable to verify" frame, node 34:1871) */
   --connie-color-action-primary: #404040;
@@ -32,8 +57,12 @@
 
   /* Shape */
   --connie-radius-small: 8px;
+  --connie-radius-small-medium: 12px; /* Decision Support boxes and table */
   --connie-radius-medium: 16px;
+  --connie-radius-large: 24px; /* expanded product photo */
   --connie-radius-2x-large: 48px;
+  --connie-radius-pill: 9999px;
+  --connie-radius-x-small: 4px;
   --connie-shadow-card: 0 0 15px #05050029;
 
   /* Spacing (spacing-core-*) */
@@ -41,10 +70,23 @@
   --connie-spacing-50: 4px;
   --connie-spacing-75: 8px;
   --connie-spacing-100: 12px;
+  --connie-spacing-200: 16px;
+  --connie-spacing-250: 20px;
   --connie-spacing-300: 24px;
+  --connie-spacing-400: 32px;
+  --connie-spacing-700: 56px;
 
   /* Typography (CR-Averta is licensed; falls back to the system sans) */
   --connie-font-family: "CR-Averta", system-ui, -apple-system, sans-serif;
+  --connie-type-title-1-size: 32px; /* DS reference 16:5174 */
+  --connie-type-title-1-line-height: 32px;
+  --connie-type-title-1-tracking: -1.5px;
+  --connie-type-title-3-size: 20px;
+  --connie-type-title-3-line-height: 24px;
+  --connie-type-title-3-tracking: -0.5px;
+  --connie-type-body-size: 16px;
+  --connie-type-body-line-height: 24px;
+  --connie-type-eyebrow-tracking: 0.4px;
   --connie-type-title-4-size: 18px;
   --connie-type-title-4-line-height: 22px;
   --connie-type-title-4-tracking: -0.25px;
@@ -54,6 +96,9 @@
   --connie-type-utility-2-line-height: 16px;
   --connie-type-utility-3-size: 12px;
   --connie-type-utility-3-line-height: 17px;
+  --connie-type-body-semibold-weight: 600;
+  --connie-type-caption-size: 11px; /* evidence link chips, Figma 16:1705 */
+  --connie-type-caption-line-height: 16px;
   --connie-type-chip-size: 10px;
   --connie-type-chip-line-height: 20px;
 }

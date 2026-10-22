@@ -26,7 +26,12 @@ const meta: Meta<typeof ClaimAnnotationCard> = {
   argTypes: {
     status: {
       control: { type: "select" },
-      options: ["misleading", "verified", "verified-community", "unable-to-verify"],
+      options: [
+        "misleading",
+        "verified",
+        "verified-community",
+        "unable-to-verify",
+      ],
     },
     onClose: { action: "close" },
     onAddSources: { action: "add sources" },
@@ -74,10 +79,29 @@ export const AllStates: Story = {
   decorators: [
     () => (
       <Flex direction="column" gap="600">
-        <ClaimAnnotationCard claim="all-day comfort" status="misleading" evidence={MISLEADING_EVIDENCE} onClose={() => {}} />
-        <ClaimAnnotationCard claim="all-day comfort" status="verified" evidence={VERIFIED_EVIDENCE} onClose={() => {}} />
-        <ClaimAnnotationCard claim="all-day comfort" status="verified-community" evidence={COMMUNITY_ONLY_EVIDENCE} onClose={() => {}} />
-        <ClaimAnnotationCard claim="all-day comfort" status="unable-to-verify" onClose={() => {}} />
+        <ClaimAnnotationCard
+          claim="all-day comfort"
+          status="misleading"
+          evidence={MISLEADING_EVIDENCE}
+          onClose={() => {}}
+        />
+        <ClaimAnnotationCard
+          claim="all-day comfort"
+          status="verified"
+          evidence={VERIFIED_EVIDENCE}
+          onClose={() => {}}
+        />
+        <ClaimAnnotationCard
+          claim="all-day comfort"
+          status="verified-community"
+          evidence={COMMUNITY_ONLY_EVIDENCE}
+          onClose={() => {}}
+        />
+        <ClaimAnnotationCard
+          claim="all-day comfort"
+          status="unable-to-verify"
+          onClose={() => {}}
+        />
       </Flex>
     ),
   ],

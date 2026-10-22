@@ -1,0 +1,179 @@
+/* Storybook landing page for the Connie library. Connie tokens only. */
+.ci-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 56px var(--connie-spacing-300) var(--connie-spacing-400);
+  font-family: var(--connie-font-family);
+  color: var(--connie-color-foreground-primary);
+}
+.ci-hero {
+  padding-bottom: var(--connie-spacing-400);
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+}
+.ci-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-100);
+  margin-bottom: var(--connie-spacing-300);
+}
+.ci-mark {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-launcher);
+  font-size: 24px;
+  font-weight: 700;
+}
+.ci-brand-text {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--connie-type-body-size);
+  line-height: 20px;
+  font-weight: 600;
+}
+.ci-brand-text span {
+  font-size: var(--connie-type-utility-2-size);
+  font-weight: 400;
+  color: var(--connie-color-foreground-secondary);
+}
+.ci-title {
+  margin: 0 0 var(--connie-spacing-200);
+  font-size: var(--connie-type-title-1-size);
+  line-height: 38px;
+  letter-spacing: var(--connie-type-title-1-tracking);
+  font-weight: 600;
+}
+.ci-lede {
+  max-width: 720px;
+  margin: 0 0 var(--connie-spacing-300);
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  color: var(--connie-color-foreground-body);
+}
+.ci-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--connie-spacing-75);
+}
+.ci-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 var(--connie-spacing-200);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-background-primary);
+  font-size: var(--connie-type-utility-1-size);
+  font-weight: 600;
+  color: var(--connie-color-foreground-primary);
+  text-decoration: none;
+}
+.ci-btn:hover {
+  background: var(--connie-color-background-hover);
+}
+.ci-btn--primary {
+  border-color: var(--connie-color-foreground-brand);
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+.ci-btn--primary:hover {
+  background: var(--connie-color-foreground-brand-on-tint);
+}
+.ci-section {
+  padding-top: var(--connie-spacing-400);
+}
+.ci-eyebrow {
+  margin: 0 0 var(--connie-spacing-200);
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--connie-color-foreground-secondary);
+}
+.ci-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--connie-spacing-100);
+}
+.ci-card {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-75);
+  padding: var(--connie-spacing-250);
+  background: var(--connie-color-background-secondary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-medium);
+  color: inherit;
+  text-decoration: none;
+}
+.ci-card:hover {
+  border-color: var(--connie-color-foreground-brand);
+}
+.ci-card-name {
+  font-size: var(--connie-type-title-4-size);
+  line-height: var(--connie-type-title-4-line-height);
+  letter-spacing: var(--connie-type-title-4-tracking);
+  font-weight: 600;
+}
+.ci-card-line {
+  flex: 1;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-body);
+}
+.ci-card-go {
+  font-size: var(--connie-type-utility-1-size);
+  font-weight: 600;
+  color: var(--connie-color-foreground-brand-on-tint);
+}
+.ci-rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--connie-spacing-300);
+}
+.ci-rules li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-50);
+  padding-left: var(--connie-spacing-200);
+  border-left: 3px solid var(--connie-color-foreground-brand);
+}
+.ci-rule-title {
+  font-size: var(--connie-type-body-size);
+  font-weight: 600;
+}
+.ci-rule-line {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-body);
+}
+.ci-footer {
+  margin-top: var(--connie-spacing-400);
+  padding-top: var(--connie-spacing-200);
+  border-top: 1px solid var(--connie-color-border-subtle);
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+.ci-footer p {
+  margin: 0 0 var(--connie-spacing-50);
+}
+.ci-btn:focus-visible,
+.ci-card:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}

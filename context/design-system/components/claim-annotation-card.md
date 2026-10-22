@@ -57,4 +57,4 @@ Figma frames: misleading 16:6796, verified 16:6860, unable to verify 34:1871.
 
 ## Placement
 
-The card anchors to the highlighted claim. Follow the Figma frame for where each card opens. Don't force all cards into one position, the placement keeps an open card from covering other highlighted claims.
+The card anchors to the highlighted claim. Follow the Figma frame for where each card opens. Don't force all cards into one position. The placement follows the frame's visual hierarchy, so the open card reads after the claim it explains.

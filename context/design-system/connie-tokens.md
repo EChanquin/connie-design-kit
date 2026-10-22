@@ -15,14 +15,20 @@ Pulled from the Connie Figma file (Vision Board, "Inline annotations" frames). T
 | color/border/subtle | #d8d9d4 | Evidence card and link-chip borders | --sds-color-border-default-default |
 | border card (from node 16:6796) | #c5c5c5 | Outer annotation card border | `--connie-color-border-card` |
 | background hover | #f5f5f3 | Chip and close button hover | `--connie-color-background-hover` |
+| background/tertiary | #f2f2ed | Storyboard page background | `--connie-color-background-tertiary` |
+| background/brand-muted | #daede0 | "Built" badge on the storyboard | `--connie-color-background-brand-muted` |
+| border/strong | #989991 | Frame thumbnail border | `--connie-color-border-strong` |
 
 ## Typography (CR-Averta)
 
 | Connie style | Spec | Use |
 |---|---|---|
+| Title 1 | Semibold 32/32, -1.5 | Storyboard page title |
+| Title 3 | Semibold 20/24, -0.5 | Storyboard stage title |
 | Title 4 | Semibold 18/22, -0.25 | Verdict title ("Misleading claim") |
+| Body | Regular 16/24 | Storyboard intro |
 | Utility 1 | Regular 14/20 | Subtitle, quotes |
-| Utility 2 (Eyebrow) | Semibold 12/16 | Source name ("Consumer Reports", "Reddit") |
+| Utility 2 (Eyebrow) | Semibold 12/16, +0.4 | Source name ("Consumer Reports", "Reddit") |
 | Utility 3 | Regular 12/17 | Link chip text |
 
 CR-Averta is a licensed CR font. If it isn't available locally, fall back to the SDS default sans and note it. Do not substitute a lookalike web font.

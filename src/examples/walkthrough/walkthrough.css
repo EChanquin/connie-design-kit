@@ -1,0 +1,593 @@
+/*
+ * walkthrough.css
+ * The journey walkthrough: stepper, scaled 1440 x 900 stages, and the page-level
+ * chat shell for the priorities stage. Reads Connie tokens only.
+ */
+
+.wt-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--connie-color-background-tertiary);
+  font-family: var(--connie-font-family);
+  color: var(--connie-color-foreground-primary);
+}
+
+/* ─── Stepper ───────────────────────────────────────────────── */
+.wt-stepper {
+  box-sizing: border-box;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--connie-spacing-200);
+  padding: 0 var(--connie-spacing-200);
+  background: var(--connie-color-background-primary);
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+}
+.wt-step-label {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: var(--connie-spacing-100);
+  text-align: center;
+}
+.wt-step-count {
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-step-title {
+  font-size: var(--connie-type-title-4-size);
+  line-height: var(--connie-type-title-4-line-height);
+  letter-spacing: var(--connie-type-title-4-tracking);
+  font-weight: 600;
+}
+.wt-tag {
+  padding: var(--connie-spacing-25) var(--connie-spacing-75);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-tag--live {
+  border-color: var(--connie-color-foreground-brand);
+  background: var(--connie-color-background-brand-muted);
+  color: var(--connie-color-foreground-primary);
+  font-weight: 600;
+}
+.wt-step-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+  height: 40px;
+  padding: 0 var(--connie-spacing-200);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-background-primary);
+  font-size: var(--connie-type-utility-1-size);
+  font-weight: 600;
+  color: var(--connie-color-foreground-primary);
+  text-decoration: none;
+}
+.wt-step-btn--next {
+  background: var(--connie-color-foreground-brand);
+  border-color: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+.wt-step-btn:focus-visible,
+.wt-star:focus-visible,
+.wt-start-card:focus-visible,
+.wt-option:focus-visible,
+.wt-primary:focus-visible,
+.wt-chip-btn:focus-visible,
+.wt-chat-body:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+/* ─── Stage ─────────────────────────────────────────────────── */
+.wt-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--connie-spacing-75) 0;
+}
+.wt-stage-slot {
+  flex-shrink: 0;
+}
+.wt-stage {
+  position: relative;
+}
+.wt-bg {
+  position: absolute;
+  inset: 0;
+  width: 1440px;
+  height: 900px;
+  object-fit: cover;
+}
+.wt-scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--connie-color-background-primary);
+  opacity: 0.45;
+}
+.wt-spotlight {
+  position: absolute;
+  border-radius: var(--connie-radius-small);
+  box-shadow: 0 0 0 2px var(--connie-color-foreground-brand);
+}
+.wt-anchor {
+  position: absolute;
+}
+.wt-star {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 3px solid var(--connie-color-background-primary);
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+  cursor: pointer;
+}
+.wt-star[aria-expanded="false"] {
+  animation: wt-pulse 1.6s ease-in-out infinite;
+}
+@keyframes wt-pulse {
+  50% {
+    transform: scale(1.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wt-star[aria-expanded="false"] {
+    animation: none;
+  }
+}
+
+.wt-panel-anchor {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.wt-decision {
+  max-height: 868px;
+  overflow-y: auto;
+}
+
+/* ─── Static stages: Figma screen gallery ─────────────────────── */
+/* Screens come from 2x Figma exports (frames-2x/), shown at 1000 x 625 inside the stage. */
+.wt-gallery {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--connie-spacing-200);
+  background: var(--connie-color-background-tertiary);
+}
+.wt-gallery-head {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-200);
+}
+.wt-gallery-tag {
+  padding: var(--connie-spacing-50) var(--connie-spacing-200);
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+}
+.wt-gallery-caption {
+  font-size: var(--connie-type-title-3-size);
+  line-height: var(--connie-type-title-3-line-height);
+  letter-spacing: var(--connie-type-title-3-tracking);
+  font-weight: 600;
+}
+.wt-gallery-count {
+  color: var(--connie-color-foreground-secondary);
+  font-weight: 400;
+}
+.wt-gallery-row {
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-300);
+}
+.wt-window {
+  margin: 0;
+  overflow: hidden;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small-medium);
+  box-shadow: var(--connie-shadow-card);
+}
+.wt-window-bar {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 var(--connie-spacing-100);
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+  background: var(--connie-color-background-secondary);
+}
+.wt-window-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-border-subtle);
+}
+.wt-window img {
+  display: block;
+  width: 1000px;
+  height: 625px;
+}
+.wt-gallery-arrow {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+  cursor: pointer;
+}
+.wt-gallery-arrow:hover:not(:disabled) {
+  background: var(--connie-color-foreground-brand-on-tint);
+}
+.wt-gallery-arrow:disabled {
+  background: var(--connie-color-background-primary);
+  color: var(--connie-color-border-strong);
+  cursor: default;
+}
+.wt-filmstrip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--connie-spacing-100);
+}
+.wt-film {
+  display: block;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--connie-radius-small);
+  background: none;
+  overflow: hidden;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.wt-film img {
+  display: block;
+}
+.wt-film:hover {
+  opacity: 1;
+}
+.wt-film[aria-current="step"] {
+  border-color: var(--connie-color-foreground-brand);
+  opacity: 1;
+}
+.wt-gallery-arrow:focus-visible,
+.wt-film:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+/* ─── Caption ───────────────────────────────────────────────── */
+.wt-caption {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 72px;
+  padding: 0 var(--connie-spacing-200) var(--connie-spacing-100);
+  text-align: center;
+}
+.wt-lines {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--connie-spacing-25) var(--connie-spacing-300);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.wt-lines strong {
+  margin-right: var(--connie-spacing-50);
+  font-size: var(--connie-type-utility-2-size);
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-disclaimer {
+  margin: var(--connie-spacing-50) 0 0;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* ─── Chat shell (priorities stage) ─────────────────────────── */
+/* Figma "Aside - Floating Bubble Panel" in 16:2306: 520 x 868 at (904, 16) */
+.wt-chat {
+  position: absolute;
+  left: 904px;
+  top: 16px;
+  box-sizing: border-box;
+  width: 520px;
+  height: 868px;
+  display: flex;
+  flex-direction: column;
+  background: var(--connie-color-background-secondary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-medium);
+  box-shadow: var(--connie-shadow-card);
+  overflow: hidden;
+}
+.wt-chat-header {
+  flex-shrink: 0;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--connie-spacing-300);
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+}
+.wt-chat-title {
+  margin: 0;
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  font-weight: 600;
+}
+.wt-chat-close {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-chat-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: var(--connie-spacing-250) 36px;
+}
+.wt-msg {
+  display: flex;
+  gap: var(--connie-spacing-100);
+}
+.wt-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+  font-size: var(--connie-type-utility-2-size);
+  font-weight: 600;
+}
+.wt-msg-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+}
+.wt-bubble {
+  margin: 0;
+  padding: var(--connie-spacing-200);
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-medium);
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+}
+.wt-bubble strong {
+  font-weight: 600;
+}
+.wt-thinking {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  font-style: italic;
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-start {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+}
+.wt-start-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-200);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-medium);
+  font: inherit;
+  color: var(--connie-color-foreground-primary);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.wt-start-card:hover {
+  background: var(--connie-color-background-hover);
+}
+.wt-start-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wt-start-title {
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  font-weight: 600;
+}
+.wt-start-sub {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-75);
+}
+.wt-option {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 17px;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small);
+  font: inherit;
+  font-size: var(--connie-type-utility-2-size);
+  font-weight: 600;
+  color: var(--connie-color-foreground-primary);
+  text-align: left;
+  cursor: pointer;
+}
+.wt-option:hover:not(:disabled) {
+  border-color: var(--connie-color-foreground-primary);
+}
+.wt-option[aria-pressed="true"] {
+  background: var(--connie-color-foreground-brand);
+  border-color: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+.wt-option:disabled:not([aria-pressed="true"]) {
+  opacity: 0.6;
+  cursor: default;
+}
+.wt-primary {
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--connie-spacing-75);
+  border-radius: var(--connie-spacing-300);
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+  font-size: var(--connie-type-body-size);
+  font-weight: 600;
+  text-decoration: none;
+}
+.wt-followups {
+  display: flex;
+  gap: var(--connie-spacing-75);
+  padding-left: 44px;
+}
+.wt-chip-btn {
+  height: 40px;
+  padding: 0 var(--connie-spacing-200);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-foreground-primary);
+  border-radius: var(--connie-radius-pill);
+  font: inherit;
+  font-size: var(--connie-type-utility-1-size);
+  color: var(--connie-color-foreground-primary);
+  cursor: pointer;
+}
+.wt-chip-btn[aria-pressed="true"] {
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+}
+.wt-chip-btn:disabled {
+  border-color: var(--connie-color-border-subtle);
+  color: var(--connie-color-foreground-secondary);
+  cursor: default;
+}
+.wt-chat-input {
+  flex-shrink: 0;
+  margin: var(--connie-spacing-250) var(--connie-spacing-200);
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--connie-spacing-75) 0 17px;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  font-size: var(--connie-type-utility-1-size);
+  color: var(--connie-color-foreground-secondary);
+}
+.wt-send {
+  width: 31px;
+  height: 31px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+}
+
+/* ─── Check-in stage (Figma 16:3966) ─────────────────────────── */
+.wt-scrim--light {
+  opacity: 0.25;
+}
+.wt-checkin-anchor {
+  position: absolute;
+  top: 20px;
+  left: 900px;
+}
+.wt-restart {
+  position: absolute;
+  left: 900px;
+  bottom: 6px;
+  padding: var(--connie-spacing-50) var(--connie-spacing-100);
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: var(--connie-type-utility-2-size);
+  color: var(--connie-color-foreground-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.wt-reopen {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: 44px;
+  padding: 0 var(--connie-spacing-200);
+  border: none;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wt-reopen:focus-visible,
+.wt-restart:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}

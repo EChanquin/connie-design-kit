@@ -1,0 +1,94 @@
+/*
+ * sourceBadge.css
+ * Source logos, stacks and link chips shared by Connie cards.
+ * Figma: Product Insights rows and evidence chips (Vision Board, instance 16:1705).
+ */
+
+.sb-logo {
+  display: inline-block;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: 0.5px solid var(--connie-color-background-primary);
+  border-radius: 50%;
+  object-fit: cover;
+}
+.sb-logo--16 {
+  width: 16px;
+  height: 16px;
+}
+.sb-logo--20 {
+  width: 20px;
+  height: 20px;
+}
+.sb-logo--letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-tertiary);
+  color: var(--connie-color-foreground-secondary);
+  font-family: var(--connie-font-family);
+  font-size: var(--connie-type-chip-size);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ─── Stack: overlapping logos + count ─────────────────────── */
+.sb-stack {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-25);
+  font-family: var(--connie-font-family);
+}
+.sb-stack-logos {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.8;
+}
+.sb-stack-logos .sb-logo + .sb-logo {
+  margin-left: -5px;
+}
+.sb-stack-count {
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* ─── Link chip ─────────────────────────────────────────────── */
+.sb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-50);
+  padding: var(--connie-spacing-50) var(--connie-spacing-100) var(--connie-spacing-50) var(--connie-spacing-75);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  font-family: var(--connie-font-family);
+  font-size: var(--connie-type-caption-size);
+  line-height: var(--connie-type-caption-line-height);
+  color: var(--connie-color-foreground-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.sb-link--interactive:hover {
+  background: var(--connie-color-background-hover);
+}
+.sb-link--interactive:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+.sb-link-arrow {
+  color: var(--connie-color-foreground-secondary);
+}
+
+.sb-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

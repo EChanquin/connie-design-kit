@@ -1,0 +1,284 @@
+/*
+ * checkInCard.css
+ * Post-purchase check-in from the Connie Figma (Vision Board, 16:3966 to 16:4307).
+ * Built after the Figma read limit, so values are matched to the Figma screenshots.
+ */
+
+.check-in-card {
+  box-sizing: border-box;
+  width: 520px;
+  max-width: 100%;
+  height: 860px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--connie-color-background-primary);
+  border: 0.5px solid var(--connie-color-border-card);
+  border-radius: var(--connie-radius-medium);
+  box-shadow: var(--connie-shadow-card);
+  font-family: var(--connie-font-family);
+  color: var(--connie-color-foreground-primary);
+  overflow: hidden;
+}
+
+/* ─── Header ───────────────────────────────────────────────── */
+.cic-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-100);
+  margin: 0 var(--connie-spacing-200);
+  padding: 40px var(--connie-spacing-200) var(--connie-spacing-200);
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+}
+.cic-logo {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-foreground-primary);
+  border-radius: var(--connie-radius-x-small);
+  color: var(--connie-color-background-primary);
+  font-weight: 600;
+}
+.cic-brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.cic-name {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+}
+.cic-org {
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+}
+.cic-close {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+
+/* ─── Conversation ─────────────────────────────────────────── */
+.cic-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+  padding: var(--connie-spacing-200) var(--connie-spacing-400);
+}
+.cic-turn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+}
+
+/* Utility 1 in a tinted bubble, left aligned */
+.cic-bubble {
+  align-self: flex-start;
+  max-width: 340px;
+  margin: 0;
+  padding: var(--connie-spacing-100) var(--connie-spacing-200);
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-small-medium);
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+}
+
+/* Her answer: dark bubble on the right */
+.cic-reply {
+  align-self: flex-end;
+  margin: 0;
+  padding: var(--connie-spacing-100) var(--connie-spacing-200);
+  background: var(--connie-color-foreground-primary);
+  border-radius: var(--connie-radius-small);
+  color: var(--connie-color-background-primary);
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  font-weight: 600;
+}
+
+.cic-product {
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-200);
+}
+.cic-product-image {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-small);
+}
+.cic-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cic-product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--connie-spacing-50);
+}
+.cic-rank {
+  padding: var(--connie-spacing-25) var(--connie-spacing-75);
+  background: var(--connie-color-background-brand-muted);
+  border-radius: var(--connie-radius-x-small);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-brand-on-tint);
+  text-transform: uppercase;
+}
+.cic-product-name {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+}
+.cic-product-price {
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-100);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.cic-retailer {
+  padding: var(--connie-spacing-25) var(--connie-spacing-75);
+  background: var(--connie-color-background-retailer);
+  border-radius: var(--connie-radius-x-small);
+  color: var(--connie-color-foreground-retailer);
+  text-transform: uppercase;
+}
+
+/* Answer chips. Her pick keeps a green outline, the rest stay readable but inactive. */
+.cic-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--connie-spacing-75);
+}
+.cic-option {
+  height: 40px;
+  padding: 0 var(--connie-spacing-200);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  font: inherit;
+  font-size: var(--connie-type-utility-1-size);
+  color: var(--connie-color-foreground-primary);
+  cursor: pointer;
+}
+.cic-option:hover:not(:disabled) {
+  border-color: var(--connie-color-foreground-primary);
+}
+.cic-option[aria-pressed="true"] {
+  border: 1.5px solid var(--connie-color-foreground-brand);
+  font-weight: 600;
+}
+.cic-option:disabled {
+  cursor: default;
+}
+
+.cic-typing {
+  display: flex;
+  gap: var(--connie-spacing-50);
+  align-self: flex-start;
+  margin: 0;
+  padding: var(--connie-spacing-100) var(--connie-spacing-200);
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-small-medium);
+}
+.cic-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-secondary);
+  animation: cic-dot 1.2s ease-in-out infinite;
+}
+.cic-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.cic-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes cic-dot {
+  50% {
+    opacity: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cic-typing span {
+    animation: none;
+  }
+}
+
+.cic-thanks {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 13px var(--connie-spacing-200) 13px 15px;
+  background: var(--connie-color-background-warm);
+  border-radius: var(--connie-radius-small-medium);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-body-line-height);
+  color: var(--connie-color-foreground-warm);
+}
+.cic-thanks svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--connie-color-icon-warm);
+}
+
+/* ─── Input ────────────────────────────────────────────────── */
+.cic-input {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--connie-spacing-100) var(--connie-spacing-400) var(--connie-spacing-400);
+  padding: var(--connie-spacing-75) var(--connie-spacing-75) var(--connie-spacing-75) var(--connie-spacing-200);
+  background: var(--connie-color-background-secondary);
+  border-radius: var(--connie-radius-pill);
+  font-size: var(--connie-type-utility-1-size);
+  color: var(--connie-color-foreground-secondary);
+}
+.cic-send {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-foreground-primary);
+  color: var(--connie-color-background-primary);
+}
+
+.cic-option:focus-visible,
+.cic-close:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+.cic-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

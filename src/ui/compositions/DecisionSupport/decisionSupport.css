@@ -1,0 +1,714 @@
+/*
+ * decisionSupport.css
+ * Connie Figma (Vision Board): cards 16:3212, table 16:3032, expanded cards 16:4962 and 16:4565,
+ * expanded table 16:4735, compare prices 16:3632. Spacing values not readable from the
+ * half-size Figma exports were taken from the team prototype built from the same file.
+ */
+
+.decision-support {
+  box-sizing: border-box;
+  width: 520px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-300);
+  background: var(--connie-color-background-secondary);
+  border: 0.5px solid var(--connie-color-border-card);
+  border-radius: var(--connie-radius-medium);
+  box-shadow: var(--connie-shadow-card);
+  font-family: var(--connie-font-family);
+  color: var(--connie-color-foreground-primary);
+}
+.decision-support--expanded {
+  width: 900px;
+}
+
+/* ─── Toolbar ───────────────────────────────────────────────── */
+.ds-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ds-views {
+  display: flex;
+  padding: var(--connie-spacing-50);
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-small);
+}
+.ds-view-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: var(--connie-radius-x-small);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+.ds-view-btn[aria-pressed="true"] {
+  background: var(--connie-color-border-subtle);
+  color: var(--connie-color-foreground-primary);
+}
+.ds-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+}
+.ds-icon-btn {
+  min-width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: var(--connie-radius-small);
+  color: var(--connie-color-foreground-secondary);
+  font: inherit;
+  cursor: pointer;
+}
+.ds-icon-btn:hover:not(:disabled) {
+  background: var(--connie-color-background-hover);
+}
+.ds-icon-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ds-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-100);
+}
+
+/* ─── CR verdict banner (table view) ────────────────────────── */
+.ds-verdict {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-200);
+  background: var(--connie-gradient-highlight);
+  border-radius: var(--connie-radius-medium);
+  color: var(--connie-color-foreground-secondary);
+}
+.ds-verdict svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ds-verdict p {
+  margin: 0;
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  color: var(--connie-color-foreground-primary);
+}
+
+/* ─── Select all ────────────────────────────────────────────── */
+.ds-select-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+  padding: 0 var(--connie-spacing-50);
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-x-small);
+}
+.ds-select-label {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.ds-select-actions {
+  display: flex;
+  gap: var(--connie-spacing-50);
+}
+.ds-select-action {
+  height: 28px;
+  padding: 0 var(--connie-spacing-50);
+  font-size: var(--connie-type-utility-2-size);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Native checkbox, visually replaced. Keeps keyboard and screen reader behavior. */
+.ds-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+  cursor: pointer;
+}
+.ds-check input {
+  position: absolute;
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+.ds-check-box {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-foreground-secondary);
+  border-radius: var(--connie-radius-x-small);
+  color: var(--connie-color-background-primary);
+}
+.ds-check input:checked + .ds-check-box,
+.ds-check input:indeterminate + .ds-check-box {
+  background: var(--connie-color-foreground-primary);
+  border-color: var(--connie-color-foreground-primary);
+}
+.ds-check-dash {
+  width: 8px;
+  height: 2px;
+  background: currentColor;
+}
+.ds-check input:focus-visible + .ds-check-box {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+.ds-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-100);
+}
+.ds-card-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-75);
+}
+.ds-card-row > .ds-check {
+  flex-shrink: 0;
+  width: 24px;
+  justify-content: center;
+  margin-top: 47px;
+}
+
+.ds-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+  padding: 17px;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small);
+}
+
+.ds-card-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-200);
+}
+.ds-card-row--wide .ds-card-top {
+  gap: var(--connie-spacing-250);
+}
+
+.ds-card-image {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-small);
+}
+.ds-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ds-card-image--wide {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--connie-radius-large);
+}
+.ds-carousel {
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  margin-top: -14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: var(--connie-radius-pill);
+  background: var(--connie-color-background-primary);
+  color: var(--connie-color-foreground-primary);
+  cursor: pointer;
+}
+.ds-carousel--prev {
+  left: var(--connie-spacing-75);
+}
+.ds-carousel--next {
+  right: var(--connie-spacing-75);
+}
+
+.ds-card-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+}
+.ds-card-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--connie-spacing-50);
+}
+
+/* Rank: #1 is green, others neutral. The text carries the rank either way. */
+.ds-rank {
+  padding: var(--connie-spacing-50) var(--connie-spacing-75);
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-x-small);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-secondary);
+  text-transform: uppercase;
+}
+.ds-rank--top {
+  background: var(--connie-color-background-brand-muted);
+  color: var(--connie-color-foreground-brand-on-tint);
+}
+
+.ds-card-name {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+}
+
+.ds-card-price {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.ds-retailer {
+  padding: var(--connie-spacing-50) var(--connie-spacing-75);
+  background: var(--connie-color-border-subtle);
+  border: none;
+  border-radius: var(--connie-radius-x-small);
+  font: inherit;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-secondary-on-tint);
+  text-transform: uppercase;
+}
+.ds-retailer--button {
+  cursor: pointer;
+}
+.ds-retailer--button:hover {
+  background: var(--connie-color-border-strong);
+  color: var(--connie-color-background-primary);
+}
+
+/* Why this fits you */
+.ds-why {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-75);
+  padding: 9px;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-background-brand-muted);
+  border-radius: var(--connie-radius-small-medium);
+}
+.ds-why-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-brand);
+  text-transform: uppercase;
+}
+.ds-why-text {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-body);
+}
+.ds-why-text strong {
+  font-weight: 600;
+  color: var(--connie-color-foreground-primary);
+}
+
+/* Evidence chips: one per source, logo first */
+.ds-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--connie-spacing-75);
+}
+.ds-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--connie-spacing-50) 10px var(--connie-spacing-50) 6px;
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-pill);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-secondary);
+  white-space: nowrap;
+}
+
+.ds-review-btn {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border: none;
+  border-radius: var(--connie-radius-small);
+  background: var(--connie-color-border-subtle);
+  font: inherit;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+  color: var(--connie-color-foreground-brand-on-tint);
+  cursor: pointer;
+}
+.ds-review-btn--top {
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+
+/* ─── Expanded card metrics ─────────────────────────────────── */
+.ds-metrics-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ds-metrics-title {
+  margin: 0;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--connie-color-foreground-secondary);
+}
+.ds-details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-50);
+  padding: var(--connie-spacing-50) var(--connie-spacing-75);
+  border: none;
+  background: none;
+  border-radius: var(--connie-radius-pill);
+  font: inherit;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+.ds-details-caret--open {
+  transform: rotate(180deg);
+}
+.ds-metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--connie-spacing-100);
+}
+.ds-metrics[hidden] {
+  display: none;
+}
+.ds-metric {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-200);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small);
+}
+.ds-metric-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-secondary);
+  border-radius: var(--connie-radius-small);
+  color: var(--connie-color-foreground-secondary);
+  overflow: hidden;
+}
+.ds-metric-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-50);
+}
+.ds-metric-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--connie-spacing-75);
+}
+.ds-metric-title {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+}
+.ds-metric-summary {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-body);
+}
+
+/* ─── Compare prices ────────────────────────────────────────── */
+.ds-compare {
+  position: absolute;
+  z-index: 3;
+  top: 92px;
+  right: -8px;
+  box-sizing: border-box;
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+  padding: 17px;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small);
+  box-shadow: var(--connie-shadow-card);
+}
+.ds-compare-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ds-compare-header .ds-icon-btn {
+  min-width: 24px;
+  height: 24px;
+}
+.ds-compare-title {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.ds-compare-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-100);
+}
+.ds-offer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-50);
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+}
+.ds-offer:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.ds-offer-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ds-offer-retailer {
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+}
+.ds-offer-price {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.ds-offer-deal {
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+}
+.ds-offer-deal--brand {
+  color: var(--connie-color-foreground-brand);
+}
+.ds-offer-deal--attention {
+  color: var(--connie-color-foreground-attention);
+}
+.ds-offer-deal--neutral {
+  color: var(--connie-color-foreground-secondary);
+}
+.ds-offer-btn {
+  padding: var(--connie-spacing-50) var(--connie-spacing-100);
+  background: var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-small-medium);
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+  font-weight: 600;
+  color: var(--connie-color-foreground-brand-on-tint);
+  text-decoration: none;
+}
+.ds-offer-btn--best {
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+
+/* ─── Table ─────────────────────────────────────────────────── */
+.ds-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--connie-radius-small-medium);
+  background: var(--connie-color-background-primary);
+}
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--connie-type-utility-2-size);
+  line-height: var(--connie-type-utility-2-line-height);
+}
+.ds-table thead th {
+  padding: var(--connie-spacing-100) 10px;
+  background: var(--connie-color-background-tertiary);
+  font-weight: 600;
+  text-align: center;
+  color: var(--connie-color-foreground-primary);
+}
+.ds-table td,
+.ds-table tbody th {
+  white-space: nowrap;
+  padding: var(--connie-spacing-100) 10px;
+  border-bottom: 1px solid var(--connie-color-border-subtle);
+  text-align: center;
+  font-weight: 600;
+}
+.ds-table .ds-col-check {
+  width: 36px;
+  padding-left: var(--connie-spacing-100);
+}
+.ds-table .ds-col-check .ds-check {
+  justify-content: center;
+}
+.ds-table .ds-col-check .ds-check-box {
+  visibility: hidden;
+}
+.ds-table tr:hover .ds-col-check .ds-check-box,
+.ds-table .ds-check input:checked + .ds-check-box,
+.ds-table .ds-check input:focus-visible + .ds-check-box {
+  visibility: visible;
+}
+.ds-table .ds-col-product {
+  text-align: left;
+  white-space: normal;
+}
+.ds-product-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ds-product-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 400;
+}
+.ds-badge {
+  padding: 1px 6px;
+  border-radius: var(--connie-radius-x-small);
+  font-size: var(--connie-type-chip-size);
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+}
+.ds-badge--best {
+  background: var(--connie-color-background-brand-muted);
+  color: var(--connie-color-foreground-brand-on-tint);
+}
+.ds-badge--runner {
+  background: var(--connie-color-border-subtle);
+  color: var(--connie-color-foreground-brand-on-tint);
+}
+.ds-badge--not {
+  background: var(--connie-color-background-attention-muted);
+  color: var(--connie-color-foreground-attention);
+}
+.ds-terrain {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--connie-radius-pill);
+}
+.ds-terrain--ok {
+  background: var(--connie-color-foreground-brand);
+  color: var(--connie-color-background-primary);
+}
+.ds-terrain--no {
+  border: 1.5px solid var(--connie-color-foreground-attention);
+  color: var(--connie-color-foreground-attention);
+}
+.ds-thumb {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-small);
+}
+.ds-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ds-table-wrap--wide .ds-table {
+  font-size: var(--connie-type-utility-1-size);
+}
+.ds-table-wrap--wide td,
+.ds-table-wrap--wide tbody th {
+  padding: var(--connie-spacing-200) 14px;
+}
+
+.ds-icon-btn:focus-visible,
+.ds-view-btn:focus-visible,
+.ds-retailer--button:focus-visible,
+.ds-review-btn:focus-visible,
+.ds-details-btn:focus-visible,
+.ds-offer-btn:focus-visible,
+.ds-carousel:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+.ds-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

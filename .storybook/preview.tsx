@@ -5,6 +5,21 @@ import theme from "./theme";
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          "Connie",
+          [
+            "Introduction",
+            "Product Insight Card",
+            "Claim Annotation Card",
+            "Priority Chips",
+            "Decision Support",
+            "Check-In Card",
+          ],
+        ],
+      },
+    },
     docs: {
       theme: theme,
     },

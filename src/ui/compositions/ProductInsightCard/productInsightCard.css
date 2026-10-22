@@ -1,0 +1,509 @@
+/*
+ * productInsightCard.css
+ * Matches the Connie Figma (Vision Board): Recommended 16:1602, Expanded 16:1705,
+ * Not recommended 16:1664. Every color, size and type value reads a Connie token.
+ * Raw px values below are Figma measurements with no token (card padding, icon tiles).
+ */
+
+.product-insight-card {
+  position: relative;
+  box-sizing: border-box;
+  width: 540px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--connie-spacing-200);
+  padding: 28px var(--connie-spacing-700) var(--connie-spacing-300) 36px;
+  background: var(--connie-color-background-secondary);
+  border: 0.5px solid var(--connie-color-border-card);
+  border-radius: var(--connie-radius-medium);
+  box-shadow: var(--connie-shadow-card);
+  font-family: var(--connie-font-family);
+  color: var(--connie-color-foreground-primary);
+}
+
+.pic-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-300);
+}
+
+/* ─── Header ───────────────────────────────────────────────── */
+.pic-header {
+  height: 40px;
+  padding: 0 var(--connie-spacing-75);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pic-verdict {
+  display: flex;
+  align-items: center;
+  gap: var(--connie-spacing-100);
+  color: var(--connie-color-foreground-primary);
+}
+
+.pic-verdict-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pic--not-recommended .pic-verdict-label svg {
+  color: var(--connie-color-foreground-secondary);
+}
+
+/* Title 4, set in caps like the Figma */
+.pic-verdict-title {
+  margin: 0;
+  font-size: var(--connie-type-title-4-size);
+  line-height: var(--connie-type-title-4-line-height);
+  letter-spacing: var(--connie-type-title-4-tracking);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pic-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+
+.pic-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--connie-spacing-50);
+  width: 104px;
+  height: 40px;
+  padding: 0 var(--connie-spacing-200);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-spacing-300);
+  font-family: inherit;
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  letter-spacing: var(--connie-type-title-4-tracking);
+  font-weight: 600;
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+.pic-save:hover {
+  background: var(--connie-color-background-hover);
+}
+.pic-save[aria-pressed="true"] {
+  border-color: var(--connie-color-foreground-brand);
+  color: var(--connie-color-foreground-brand);
+}
+
+/* ─── Insight list ─────────────────────────────────────────── */
+/* The list scrolls inside the card. The scrollbar sits in the card's right padding, like the Figma. */
+.pic-scroll {
+  box-sizing: content-box;
+  width: 100%;
+  max-height: 400px;
+  padding-right: 22px;
+  margin-right: -22px;
+  overflow-y: auto;
+  border-radius: var(--connie-radius-medium);
+  scrollbar-width: thin;
+  scrollbar-color: var(--connie-color-scroll-thumb) var(--connie-color-scroll-track);
+}
+.pic-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.pic-scroll::-webkit-scrollbar-track {
+  background: var(--connie-color-scroll-track);
+  border-radius: var(--connie-radius-small);
+}
+.pic-scroll::-webkit-scrollbar-thumb {
+  background: var(--connie-color-scroll-thumb);
+  border-radius: var(--connie-radius-small);
+}
+
+.pic-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0.5px solid var(--connie-color-border-row);
+  border-radius: var(--connie-radius-medium);
+  background: var(--connie-color-background-primary);
+}
+
+.pic-row + .pic-row {
+  border-top: 0.5px solid var(--connie-color-border-row);
+}
+
+.pic-row-toggle {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--connie-spacing-200);
+  padding: var(--connie-spacing-200) var(--connie-spacing-250) var(--connie-spacing-250) var(--connie-spacing-200);
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.pic-row-toggle:hover .pic-caret {
+  background: var(--connie-color-border-subtle);
+}
+.pic-row-toggle:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: -2px;
+}
+
+.pic-row-main {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-100);
+  width: 350px;
+  min-width: 0;
+}
+
+.pic-row-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-secondary);
+  border-radius: var(--connie-radius-small);
+  color: var(--connie-color-foreground-secondary);
+  overflow: hidden;
+}
+
+.pic-row-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-50);
+}
+
+.pic-row-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--connie-spacing-75);
+}
+
+/* Body Semibold */
+.pic-row-title {
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  font-weight: 600;
+  color: var(--connie-color-foreground-primary);
+}
+
+/* Utility 1 */
+.pic-row-summary {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-body);
+}
+
+.pic-caret {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--connie-color-background-tertiary);
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-secondary);
+  transition: transform 0.15s ease;
+}
+.pic-row--open .pic-caret {
+  transform: rotate(180deg);
+}
+
+/* ─── Expanded evidence ────────────────────────────────────── */
+.pic-row-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-250);
+  margin: 0 var(--connie-spacing-250) 0 var(--connie-spacing-200);
+  padding: var(--connie-spacing-200) var(--connie-spacing-300) var(--connie-spacing-250);
+  border-top: 0.5px solid var(--connie-color-border-row);
+}
+.pic-row-panel[hidden] {
+  display: none;
+}
+
+.pic-evidence {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--connie-spacing-100);
+}
+
+.pic-evidence-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-25);
+}
+
+.pic-evidence-source,
+.pic-evidence-quote {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-primary);
+}
+.pic-evidence-source {
+  font-weight: 600;
+}
+
+/* ─── Heads up (a drawback on a recommended product) ───────── */
+.pic-heads-up {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-75);
+  margin-top: var(--connie-spacing-200);
+  padding: var(--connie-spacing-200) var(--connie-spacing-250) var(--connie-spacing-250) var(--connie-spacing-200);
+  background: var(--connie-color-background-attention-muted);
+}
+.pic-heads-up-icon {
+  flex-shrink: 0;
+  color: var(--connie-color-foreground-attention);
+}
+.pic-heads-up-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-50);
+}
+.pic-heads-up-title,
+.pic-heads-up-summary {
+  margin: 0;
+}
+.pic-heads-up-title {
+  font-size: var(--connie-type-body-size);
+  line-height: var(--connie-type-body-line-height);
+  font-weight: 600;
+}
+.pic-heads-up-summary {
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+
+/* ─── Feedback footer ──────────────────────────────────────── */
+.pic-feedback {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-100) 0 0;
+  border-top: 1px solid var(--connie-color-border-subtle);
+}
+.pic-feedback-label {
+  margin: 0 0 0 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--connie-color-foreground-muted);
+}
+.pic-vote {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+.pic-vote:hover {
+  background: var(--connie-color-background-hover);
+}
+.pic-vote[aria-pressed="true"] {
+  background: var(--connie-color-background-brand-muted);
+  border-color: var(--connie-color-foreground-brand);
+  color: var(--connie-color-foreground-brand-on-tint);
+}
+
+/* The Figma draws the close X in #c7c7c7, which is under 3:1 on this background.
+   It uses the secondary foreground instead so the icon passes WCAG 1.4.11. */
+.pic-close {
+  position: absolute;
+  top: 22.5px;
+  right: 21.5px;
+  width: 20px;
+  height: 20px;
+}
+
+.pic-icon-btn:focus-visible,
+.pic-save:focus-visible,
+.pic-vote:focus-visible,
+.pic-scroll:focus-visible,
+.pic-basis-edit:focus-visible {
+  outline: 2px solid var(--connie-color-foreground-brand);
+  outline-offset: 2px;
+}
+
+/* ─── "Based on" popover (Figma 16:6299, shown in 16:1889) ─── */
+.pic-basis {
+  position: absolute;
+  z-index: 2;
+  left: -6px;
+  bottom: calc(100% - 15px);
+  box-sizing: border-box;
+  width: 520px;
+  max-width: calc(100vw - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-200);
+  padding: var(--connie-spacing-300) var(--connie-spacing-300) var(--connie-spacing-250) 28px;
+  background: var(--connie-color-background-secondary);
+  border: 0.5px solid var(--connie-color-border-card);
+  border-radius: var(--connie-radius-medium);
+  box-shadow: var(--connie-shadow-card);
+}
+.pic-basis-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pic-basis-title {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+  letter-spacing: var(--connie-type-eyebrow-tracking);
+  text-transform: uppercase;
+}
+.pic-basis-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--connie-spacing-100);
+}
+.pic-basis-label {
+  flex-shrink: 0;
+  width: 112px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-75);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  color: var(--connie-color-foreground-primary);
+}
+.pic-basis-label svg {
+  color: var(--connie-color-foreground-secondary);
+}
+.pic-basis-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--connie-spacing-75);
+}
+.pic-basis-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--connie-spacing-50);
+  height: 34px;
+  box-sizing: border-box;
+  padding: 0 var(--connie-spacing-100) 0 var(--connie-spacing-75);
+  background: var(--connie-color-background-primary);
+  border: 1px solid var(--connie-color-border-subtle);
+  border-radius: var(--connie-radius-pill);
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+}
+.pic-basis-edit {
+  display: inline-flex;
+  padding: 2px;
+  border: none;
+  background: none;
+  border-radius: var(--connie-radius-pill);
+  color: var(--connie-color-foreground-secondary);
+  cursor: pointer;
+}
+
+/* ─── Loading ──────────────────────────────────────────────── */
+/* No card-level loading frame exists in Figma (16:6717 only tints the page).
+   The skeleton reuses the card shell and the highlight gradient from the same file. */
+.pic-loading-title {
+  margin: 0;
+  font-size: var(--connie-type-utility-1-size);
+  line-height: var(--connie-type-utility-1-line-height);
+  font-weight: 600;
+  color: var(--connie-color-foreground-secondary);
+}
+.pic-row--skeleton {
+  display: flex;
+  gap: var(--connie-spacing-100);
+  padding: var(--connie-spacing-200) var(--connie-spacing-250) var(--connie-spacing-250) var(--connie-spacing-200);
+}
+.pic-skeleton-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--connie-spacing-75);
+}
+.pic-skeleton {
+  display: block;
+  border-radius: var(--connie-radius-small);
+  background: var(--connie-gradient-highlight), var(--connie-color-background-tertiary);
+  background-size: 200% 100%;
+  animation: pic-shimmer 1.4s ease-in-out infinite;
+}
+.pic-skeleton--icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.pic-skeleton--title {
+  width: 40%;
+  height: 16px;
+}
+.pic-skeleton--line {
+  width: 85%;
+  height: 14px;
+}
+@keyframes pic-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pic-skeleton {
+    animation: none;
+  }
+}
+
+.pic-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
